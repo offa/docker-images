@@ -47,3 +47,9 @@ build-gcc-7:
     - docker build -t ${CI_REGISTRY_IMAGE}/gcc-7 cpp/gcc-7
     - docker push ${CI_REGISTRY_IMAGE}/gcc-7
 
+build-gcc-6:
+  stage: build-cpp-compiler
+  script:
+    - docker build -t ${CI_REGISTRY_IMAGE}/gcc-6 cpp/gcc-6
+    - docker push ${CI_REGISTRY_IMAGE}/gcc-6
+
