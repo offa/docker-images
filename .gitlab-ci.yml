@@ -60,4 +60,9 @@ build-clang-5:
     - docker build -t ${DEPLOY_REGISTRY}/clang-5 cpp/clang-5
     - docker push ${DEPLOY_REGISTRY}/clang-5
 
+build-clang-4:
+  stage: build-cpp-compiler
+  script:
+    - docker build -t ${DEPLOY_REGISTRY}/clang-4 cpp/clang-4
+    - docker push ${DEPLOY_REGISTRY}/clang-4
 
