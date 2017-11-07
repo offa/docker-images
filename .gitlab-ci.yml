@@ -15,5 +15,5 @@ before_script:
 
 build-base:
   script:
-    - docker build -t ${CI_REGISTRY_IMAGE}:base base
-    - docker push ${CI_REGISTRY_IMAGE}:base
+    - docker build -t ${CI_REGISTRY_IMAGE}/base base
+    - docker push ${CI_REGISTRY_IMAGE}/base
