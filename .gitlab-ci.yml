@@ -18,6 +18,9 @@ before_script:
   - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
 
 
+# -----------------------------------------
+# --- Base Images
+# -----------------------------------------
 build-base:
   stage: build-base
   script:
@@ -25,6 +28,9 @@ build-base:
     - docker push ${CI_REGISTRY_IMAGE}/base
 
 
+# -----------------------------------------
+# --- Language Base Images
+# -----------------------------------------
 build-base-cpp:
   stage: build-base-lang
   script:
@@ -32,6 +38,9 @@ build-base-cpp:
     - docker push ${CI_REGISTRY_IMAGE}/base-cpp
 
 
+# -----------------------------------------
+# --- C++ and C Images
+# -----------------------------------------
 build-gcc-7:
   stage: build-cpp-compiler
   script:
