@@ -1,0 +1,13 @@
+language: generic
+
+dist: trusty
+sudo: required
+
+services:
+  - docker
+
+
+script:
+  - docker --version
+  - docker info
+
