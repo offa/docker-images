@@ -1,4 +1,4 @@
-FROM registry.gitlab.com/offa/docker-images/base:latest
+FROM registry.gitlab.com/offa/docker-images/base-cpp:latest
 
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test && \
     apt-get update && \

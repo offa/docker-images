@@ -9,6 +9,7 @@ services:
 
 stages:
   - build-base
+  - build-base-lang
   - build-cpp-compiler
 
 
@@ -22,6 +23,13 @@ build-base:
   script:
     - docker build -t ${CI_REGISTRY_IMAGE}/base base
     - docker push ${CI_REGISTRY_IMAGE}/base
+
+
+build-base-cpp:
+  stage: build-base-lang
+  script:
+    - docker build -t ${CI_REGISTRY_IMAGE}/base-cpp cpp/base
+    - docker push ${CI_REGISTRY_IMAGE}/base-cpp
 
 
 build-gcc-7:
