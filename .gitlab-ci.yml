@@ -9,7 +9,7 @@ services:
 
 stages:
   - build-base
-  - build-compiler
+  - build-cpp-compiler
 
 
 before_script:
@@ -25,7 +25,7 @@ build-base:
 
 
 build-gcc-7:
-  stage: build-compiler
+  stage: build-cpp-compiler
   script:
     - docker build -t ${CI_REGISTRY_IMAGE}/gcc-7 cpp/gcc-7
     - docker push ${CI_REGISTRY_IMAGE}/gcc-7
