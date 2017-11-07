@@ -1,12 +1,16 @@
 image: docker:latest
 
-# When using dind, it's wise to use the overlayfs driver for
-# improved performance.
 variables:
   DOCKER_DRIVER: overlay2
 
 services:
   - docker:dind
+
+
+stages:
+  - build-base
+  - build-compiler
+
 
 before_script:
   - docker info
@@ -14,6 +18,15 @@ before_script:
 
 
 build-base:
+  stage: build-base
   script:
     - docker build -t ${CI_REGISTRY_IMAGE}/base base
     - docker push ${CI_REGISTRY_IMAGE}/base
+
+
+build-gcc-7:
+  stage: build-compiler
+  script:
+    - docker build -t ${CI_REGISTRY_IMAGE}/gcc-7 cpp/gcc-7
+    - docker push ${CI_REGISTRY_IMAGE}/gcc-7
+
