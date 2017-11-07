@@ -10,10 +10,10 @@ services:
 
 before_script:
   - docker info
-  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
 
 
-build:
+build-base:
   script:
-    - docker --version
-
+    - docker build -t ${CI_REGISTRY_IMAGE}:base base
+    - docker push ${CI_REGISTRY_IMAGE}:base
