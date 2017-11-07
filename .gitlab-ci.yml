@@ -54,3 +54,10 @@ build-gcc-6:
     - docker build -t ${DEPLOY_REGISTRY}/gcc-6 cpp/gcc-6
     - docker push ${DEPLOY_REGISTRY}/gcc-6
 
+build-clang-5:
+  stage: build-cpp-compiler
+  script:
+    - docker build -t ${DEPLOY_REGISTRY}/clang-5 cpp/clang-5
+    - docker push ${DEPLOY_REGISTRY}/clang-5
+
+
