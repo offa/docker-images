@@ -2,6 +2,7 @@ image: docker:latest
 
 variables:
   DOCKER_DRIVER: overlay2
+  DEPLOY_REGISTRY: ${CI_REGISTRY_IMAGE}
 
 services:
   - docker:dind
@@ -24,8 +25,8 @@ before_script:
 build-base:
   stage: build-base
   script:
-    - docker build -t ${CI_REGISTRY_IMAGE}/base base
-    - docker push ${CI_REGISTRY_IMAGE}/base
+    - docker build -t ${DEPLOY_REGISTRY}/base base
+    - docker push ${DEPLOY_REGISTRY}/base
 
 
 # -----------------------------------------
@@ -34,8 +35,8 @@ build-base:
 build-base-cpp:
   stage: build-base-lang
   script:
-    - docker build -t ${CI_REGISTRY_IMAGE}/base-cpp cpp/base
-    - docker push ${CI_REGISTRY_IMAGE}/base-cpp
+    - docker build -t ${DEPLOY_REGISTRY}/base-cpp cpp/base
+    - docker push ${DEPLOY_REGISTRY}/base-cpp
 
 
 # -----------------------------------------
@@ -44,12 +45,12 @@ build-base-cpp:
 build-gcc-7:
   stage: build-cpp-compiler
   script:
-    - docker build -t ${CI_REGISTRY_IMAGE}/gcc-7 cpp/gcc-7
-    - docker push ${CI_REGISTRY_IMAGE}/gcc-7
+    - docker build -t ${DEPLOY_REGISTRY}/gcc-7 cpp/gcc-7
+    - docker push ${DEPLOY_REGISTRY}/gcc-7
 
 build-gcc-6:
   stage: build-cpp-compiler
   script:
-    - docker build -t ${CI_REGISTRY_IMAGE}/gcc-6 cpp/gcc-6
-    - docker push ${CI_REGISTRY_IMAGE}/gcc-6
+    - docker build -t ${DEPLOY_REGISTRY}/gcc-6 cpp/gcc-6
+    - docker push ${DEPLOY_REGISTRY}/gcc-6
 
