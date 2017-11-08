@@ -10,6 +10,7 @@ RUN add-apt-repository ppa:ubuntu-toolchain-r/test && \
 
 
 RUN LLVM_RELEASE=release_50 && \
+    mkdir -p deps && cd deps && \
     git clone --depth=1 -b ${LLVM_RELEASE} https://github.com/llvm-mirror/llvm.git llvm-source && \
     git clone --depth=1 -b ${LLVM_RELEASE} https://github.com/llvm-mirror/libcxx.git llvm-source/projects/libcxx && \
     git clone --depth=1 -b ${LLVM_RELEASE} https://github.com/llvm-mirror/libcxxabi.git llvm-source/projects/libcxxabi && \
@@ -21,5 +22,6 @@ RUN LLVM_RELEASE=release_50 && \
         -DLIBCXX_ABI_UNSTABLE=ON \
         ../llvm-source && \
     make cxx -j4 && \
-    make install-cxxabi install-cxx
+    make install-cxxabi install-cxx && \
+    cd ../.. && rm -rf deps
 
