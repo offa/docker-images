@@ -1,6 +1,6 @@
 FROM registry.gitlab.com/offa/docker-images/base:latest
 
-RUN apt-get install -y --no-install-recommends build-essential
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential
 
 RUN curl -sSL https://cmake.org/files/v3.9/cmake-3.9.5-Linux-x86_64.sh -o install-cmake.sh && \
     chmod +x install-cmake.sh && \
