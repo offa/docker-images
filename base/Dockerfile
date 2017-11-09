@@ -5,5 +5,5 @@ RUN  apt-get update &&  \
         add-apt-repository ppa:git-core/ppa && \
         apt-get update && \
         apt-get install -y --no-install-recommends git curl && \
-        apt-get autoclean && apt-get autoremove
+        apt-get autoclean && apt-get autoremove -y
 
