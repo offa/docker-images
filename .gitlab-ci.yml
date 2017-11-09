@@ -74,12 +74,12 @@ build-clang-4:
 release-stable:
   stage: release
   script:
-    - script/release-images.sh base
-    - script/release-images.sh base-cpp
-    - script/release-images.sh gcc-7
-    - script/release-images.sh gcc-6
-    - script/release-images.sh clang-5
-    - script/release-images.sh clang-4
+    - script/release-image.sh base
+    - script/release-image.sh base-cpp
+    - script/release-image.sh gcc-7
+    - script/release-image.sh gcc-6
+    - script/release-image.sh clang-5
+    - script/release-image.sh clang-4
   only:
     - master
 
