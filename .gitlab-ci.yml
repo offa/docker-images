@@ -80,4 +80,6 @@ release-stable:
     - script/release-images.sh gcc-6
     - script/release-images.sh clang-5
     - script/release-images.sh clang-4
+  only:
+    - master
 
