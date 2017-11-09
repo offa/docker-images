@@ -12,6 +12,7 @@ stages:
   - build-base
   - build-base-lang
   - build-cpp-compiler
+  - release
 
 
 before_script:
@@ -65,4 +66,18 @@ build-clang-4:
   script:
     - docker build -t ${DEPLOY_REGISTRY}/clang-4 cpp/clang-4
     - docker push ${DEPLOY_REGISTRY}/clang-4
+
+
+# -----------------------------------------
+# --- Release
+# -----------------------------------------
+release-stable:
+  stage: release
+  script:
+    - script/release-images.sh base
+    - script/release-images.sh base-cpp
+    - script/release-images.sh gcc-7
+    - script/release-images.sh gcc-6
+    - script/release-images.sh clang-5
+    - script/release-images.sh clang-4
 
