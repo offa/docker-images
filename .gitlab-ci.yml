@@ -26,8 +26,7 @@ before_script:
 build-base:
   stage: build-base
   script:
-    - docker build -t ${DEPLOY_REGISTRY}/base base
-    - docker push ${DEPLOY_REGISTRY}/base
+    - script/build-image.sh base base
 
 
 # -----------------------------------------
@@ -36,8 +35,7 @@ build-base:
 build-base-cpp:
   stage: build-base-lang
   script:
-    - docker build -t ${DEPLOY_REGISTRY}/base-cpp cpp/base
-    - docker push ${DEPLOY_REGISTRY}/base-cpp
+    - script/build-image.sh base-cpp cpp/base
 
 
 # -----------------------------------------
@@ -46,26 +44,22 @@ build-base-cpp:
 build-gcc-7:
   stage: build-cpp-compiler
   script:
-    - docker build -t ${DEPLOY_REGISTRY}/gcc-7 cpp/gcc-7
-    - docker push ${DEPLOY_REGISTRY}/gcc-7
+    - script/build-image.sh gcc-7 cpp/gcc-7
 
 build-gcc-6:
   stage: build-cpp-compiler
   script:
-    - docker build -t ${DEPLOY_REGISTRY}/gcc-6 cpp/gcc-6
-    - docker push ${DEPLOY_REGISTRY}/gcc-6
+    - script/build-image.sh gcc-6 cpp/gcc-6
 
 build-clang-5:
   stage: build-cpp-compiler
   script:
-    - docker build -t ${DEPLOY_REGISTRY}/clang-5 cpp/clang-5
-    - docker push ${DEPLOY_REGISTRY}/clang-5
+    - script/build-image.sh clang-5 cpp/clang-5
 
 build-clang-4:
   stage: build-cpp-compiler
   script:
-    - docker build -t ${DEPLOY_REGISTRY}/clang-4 cpp/clang-4
-    - docker push ${DEPLOY_REGISTRY}/clang-4
+    - script/build-image.sh clang-4 cpp/clang-4
 
 
 # -----------------------------------------
