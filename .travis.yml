@@ -6,6 +6,10 @@ sudo: required
 services:
   - docker
 
+env:
+  global:
+    - DEPLOY_REGISTRY: ${CI_REGISTRY_IMAGE}
+
 
 script:
   - script/build-image.sh base base
