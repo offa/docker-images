@@ -61,6 +61,12 @@ build-clang-4:
   script:
     - script/build-image.sh clang-4 cpp/clang-4
 
+build-arm-none-eabi-gcc:
+  stage: build-cpp-compiler
+  script:
+    - script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc
+
+
 
 # -----------------------------------------
 # --- Release
@@ -74,6 +80,7 @@ release-stable:
     - script/release-image.sh gcc-6
     - script/release-image.sh clang-5
     - script/release-image.sh clang-4
+    - script/release-image.sh arm-none-eabi-gcc
   only:
     - master
 

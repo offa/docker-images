@@ -18,4 +18,5 @@ script:
   - script/build-image.sh gcc-6 cpp/gcc-6 --no-push
   - script/build-image.sh clang-5 cpp/clang-5 --no-push
   - script/build-image.sh clang-4 cpp/clang-4 --no-push
+  - script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc --no-push
 
