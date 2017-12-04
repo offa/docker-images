@@ -1,5 +1,13 @@
 #!/bin/sh
 
+# Arguments:
+#
+#   1: Image Name
+#   2: Version
+#   3: Path to Dockerfile
+#   4: --no-push - Only build the image [Optional]
+
+
 set -ex
 
 IMG=$1
