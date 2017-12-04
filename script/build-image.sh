@@ -21,7 +21,7 @@ if [ ! -z "${VERSION}" ]; then
     BUILD_ARG="--build-arg VERSION=${VERSION}"
 fi
 
-docker build --pull ${VERSION} -t ${DEV_IMAGE} ${IMG_PATH}
+docker build --pull ${BUILD_ARG} -t ${DEV_IMAGE} ${IMG_PATH}
 
 if [ "${OPT_ARG}" != "--no-push" ]; then
     docker push ${DEV_IMAGE}
