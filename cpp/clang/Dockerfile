@@ -6,9 +6,9 @@ ARG VERSION
 ENV CC=clang-${VERSION}.0 CXX=clang++-${VERSION}.0
 
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test && \
-    echo "------deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-${VERSION}.0 main-----" && \
+    PPA="deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-${VERSION}.0 main" && \
     curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
-    add-apt-repository 'deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-${VERSION}.0 main' && \
+    add-apt-repository ${PPA} && \
     apt-get update && \
     apt-get install -y --no-install-recommends clang-${VERSION}.0
 
