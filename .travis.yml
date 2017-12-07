@@ -9,6 +9,7 @@ services:
 env:
   global:
     - DEPLOY_REGISTRY: "registry.gitlab.com/offa/docker-images"
+    - IMAGE_PUSH
 
 
 script:
