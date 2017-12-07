@@ -6,10 +6,19 @@ sudo: required
 services:
   - docker
 
+addons:
+  apt:
+    packages:
+      - docker-ce
+
+
 env:
   global:
     - DEPLOY_REGISTRY: "registry.gitlab.com/offa/docker-images"
     - IMAGE_NO_PUSH: true
+
+before_script:
+  - docker --version
 
 
 script:
