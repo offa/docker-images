@@ -13,11 +13,11 @@ env:
 
 
 script:
-  - script/build-image.sh base base --no-push
-  - script/build-image.sh base-cpp cpp/base --no-push
-  - script/build-image.sh gcc-7 cpp/gcc-7 --no-push
-  - script/build-image.sh gcc-6 cpp/gcc-6 --no-push
-  - script/build-image.sh clang-5 cpp/clang-5 --no-push
-  - script/build-image.sh clang-4 cpp/clang-4 --no-push
-  - script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc --no-push
+  - script/build-image.sh base base
+  - script/build-image.sh base-cpp cpp/base
+  - script/build-image.sh gcc-7 cpp/gcc 7
+  - script/build-image.sh gcc-6 cpp/gcc 6
+  - script/build-image.sh clang-5 cpp/clang 5
+  - script/build-image.sh clang-4 cpp/clang 4
+  - script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc 6
 
