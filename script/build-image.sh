@@ -23,7 +23,7 @@ fi
 
 docker build --pull ${BUILD_ARG} -t ${DEV_IMAGE} ${IMG_PATH}
 
-if [ ! -z "${IMAGE_PUSH}" ]
+if [ ! -v IMAGE_NO_PUSH ]
 then
     docker push ${DEV_IMAGE}
 fi
