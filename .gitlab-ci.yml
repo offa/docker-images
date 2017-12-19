@@ -64,7 +64,7 @@ build-clang-4:
 build-arm-none-eabi-gcc:
   stage: build-cpp-compiler
   script:
-    - script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc 6
+    - script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc 7
 
 
 
