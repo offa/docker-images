@@ -83,6 +83,7 @@ build-arm-none-eabi-gcc:
 release-stable:
   stage: release
   script:
+    - script/release-image.sh docker-build
     - script/release-image.sh base
     - script/release-image.sh base-cpp
     - script/release-image.sh gcc-7
