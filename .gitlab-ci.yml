@@ -23,7 +23,7 @@ before_script:
 # -----------------------------------------
 # --- Docker Images
 # -----------------------------------------
-build-base:
+build-docker-build:
   stage: build-docker
   script:
     - script/build-image.sh docker-build docker/docker-build
