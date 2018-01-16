@@ -17,9 +17,6 @@ env:
     - DEPLOY_REGISTRY: "registry.gitlab.com/offa/docker-images"
     - IMAGE_NO_PUSH: true
 
-before_script:
-  - docker --version
-
 
 script:
   - script/build-image.sh docker-build docker/docker-build
