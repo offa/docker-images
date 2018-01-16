@@ -9,6 +9,7 @@ services:
 
 
 stages:
+  - build-docker
   - build-base
   - build-base-lang
   - build-cpp-compiler
@@ -18,6 +19,14 @@ stages:
 before_script:
   - docker info
   - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
+
+# -----------------------------------------
+# --- Docker Images
+# -----------------------------------------
+build-base:
+  stage: build-docker
+  script:
+    - script/build-image.sh docker-build docker/docker-build
 
 
 # -----------------------------------------

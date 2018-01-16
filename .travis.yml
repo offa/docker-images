@@ -22,6 +22,7 @@ before_script:
 
 
 script:
+  - script/build-image.sh docker-build docker/docker-build
   - script/build-image.sh base base
   - script/build-image.sh base-cpp cpp/base
   - script/build-image.sh gcc-7 cpp/gcc 7
