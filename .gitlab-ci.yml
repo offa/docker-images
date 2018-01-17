@@ -3,6 +3,7 @@ image: docker:latest
 variables:
   DOCKER_DRIVER: overlay2
   DEPLOY_REGISTRY: ${CI_REGISTRY_IMAGE}
+  RETRIES: 1
 
 services:
   - docker:dind
@@ -27,6 +28,7 @@ build-docker-build:
   stage: build-docker
   script:
     - script/build-image.sh docker-build docker/docker-build
+  retry: ${RETRIES}
 
 
 # -----------------------------------------
@@ -36,6 +38,7 @@ build-base:
   stage: build-base
   script:
     - script/build-image.sh base base
+  retry: ${RETRIES}
 
 
 # -----------------------------------------
@@ -45,6 +48,7 @@ build-base-cpp:
   stage: build-base-lang
   script:
     - script/build-image.sh base-cpp cpp/base
+  retry: ${RETRIES}
 
 
 # -----------------------------------------
@@ -54,26 +58,31 @@ build-gcc-7:
   stage: build-cpp-compiler
   script:
     - script/build-image.sh gcc-7 cpp/gcc 7
+  retry: ${RETRIES}
 
 build-gcc-6:
   stage: build-cpp-compiler
   script:
     - script/build-image.sh gcc-6 cpp/gcc 6
+  retry: ${RETRIES}
 
 build-clang-5:
   stage: build-cpp-compiler
   script:
     - script/build-image.sh clang-5 cpp/clang 5
+  retry: ${RETRIES}
 
 build-clang-4:
   stage: build-cpp-compiler
   script:
     - script/build-image.sh clang-4 cpp/clang 4
+  retry: ${RETRIES}
 
 build-arm-none-eabi-gcc:
   stage: build-cpp-compiler
   script:
     - script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc 7
+  retry: ${RETRIES}
 
 
 
