@@ -17,7 +17,6 @@ stages:
 
 
 before_script:
-  - docker info
   - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
 
 
