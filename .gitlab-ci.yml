@@ -3,7 +3,6 @@ image: docker:latest
 variables:
   DOCKER_DRIVER: overlay2
   DEPLOY_REGISTRY: ${CI_REGISTRY_IMAGE}
-  RETRIES: 1
 
 services:
   - docker:dind
@@ -21,68 +20,71 @@ before_script:
   - docker info
   - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
 
+.build_template: &build_job_base
+  retry: 1
+
 # -----------------------------------------
 # --- Docker Images
 # -----------------------------------------
 build-docker-build:
+  <<: *build_job_base
   stage: build-docker
   script:
     - script/build-image.sh docker-build docker/docker-build
-  retry: ${RETRIES}
 
 
 # -----------------------------------------
 # --- Base Images
 # -----------------------------------------
 build-base:
+  <<: *build_job_base
   stage: build-base
   script:
     - script/build-image.sh base base
-  retry: ${RETRIES}
 
 
 # -----------------------------------------
 # --- Language Base Images
 # -----------------------------------------
 build-base-cpp:
+  <<: *build_job_base
   stage: build-base-lang
   script:
     - script/build-image.sh base-cpp cpp/base
-  retry: ${RETRIES}
 
 
 # -----------------------------------------
 # --- C++ and C Images
 # -----------------------------------------
 build-gcc-7:
+  <<: *build_job_base
   stage: build-cpp-compiler
   script:
     - script/build-image.sh gcc-7 cpp/gcc 7
-  retry: ${RETRIES}
 
 build-gcc-6:
+  <<: *build_job_base
   stage: build-cpp-compiler
   script:
     - script/build-image.sh gcc-6 cpp/gcc 6
-  retry: ${RETRIES}
 
 build-clang-5:
+  <<: *build_job_base
   stage: build-cpp-compiler
   script:
     - script/build-image.sh clang-5 cpp/clang 5
-  retry: ${RETRIES}
 
 build-clang-4:
+  <<: *build_job_base
   stage: build-cpp-compiler
   script:
     - script/build-image.sh clang-4 cpp/clang 4
-  retry: ${RETRIES}
 
 build-arm-none-eabi-gcc:
+  <<: *build_job_base
   stage: build-cpp-compiler
   script:
     - script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc 7
-  retry: ${RETRIES}
 
 
 
