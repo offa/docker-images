@@ -11,9 +11,8 @@ services:
 stages:
   - build-docker
   - build-base
-  - build-base-lang
-  - build-cpp-compiler
-  - build-java-maven
+  - build-lang-base
+  - build-lang-specific
   - release
 
 
@@ -50,7 +49,7 @@ build-base:
 # -----------------------------------------
 build-base-cpp:
   <<: *build_job_base
-  stage: build-base-lang
+  stage: build-lang-base
   script:
     - script/build-image.sh base-cpp cpp/base
 
@@ -60,31 +59,31 @@ build-base-cpp:
 # -----------------------------------------
 build-gcc-7:
   <<: *build_job_base
-  stage: build-cpp-compiler
+  stage: build-lang-specific
   script:
     - script/build-image.sh gcc-7 cpp/gcc 7
 
 build-gcc-6:
   <<: *build_job_base
-  stage: build-cpp-compiler
+  stage: build-lang-specific
   script:
     - script/build-image.sh gcc-6 cpp/gcc 6
 
 build-clang-5:
   <<: *build_job_base
-  stage: build-cpp-compiler
+  stage: build-lang-specific
   script:
     - script/build-image.sh clang-5 cpp/clang 5
 
 build-clang-4:
   <<: *build_job_base
-  stage: build-cpp-compiler
+  stage: build-lang-specific
   script:
     - script/build-image.sh clang-4 cpp/clang 4
 
 build-arm-none-eabi-gcc:
   <<: *build_job_base
-  stage: build-cpp-compiler
+  stage: build-lang-specific
   script:
     - script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc 7
 
@@ -94,19 +93,19 @@ build-arm-none-eabi-gcc:
 # -----------------------------------------
 build-openjdk-9-maven:
   <<: *build_job_base
-  stage: build-java-maven
+  stage: build-lang-specific
   script:
     - script/build-image.sh openjdk-9-maven java/maven 9
 
 build-openjdk-8-maven:
   <<: *build_job_base
-  stage: build-java-maven
+  stage: build-lang-specific
   script:
     - script/build-image.sh openjdk-8-maven java/maven 8
 
 build-openjdk-7-maven:
   <<: *build_job_base
-  stage: build-java-maven
+  stage: build-lang-specific
   script:
     - script/build-image.sh openjdk-7-maven java/maven 7
 
