@@ -19,12 +19,18 @@ env:
 
 
 script:
+  # Base
   - script/build-image.sh docker-build docker/docker-build
   - script/build-image.sh base base
+  # C++
   - script/build-image.sh base-cpp cpp/base
   - script/build-image.sh gcc-7 cpp/gcc 7
   - script/build-image.sh gcc-6 cpp/gcc 6
   - script/build-image.sh clang-5 cpp/clang 5
   - script/build-image.sh clang-4 cpp/clang 4
   - script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc 7
-
+  - script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc 7
+  # Java
+  - script/build-image.sh openjdk-7-maven java/maven 7
+  - script/build-image.sh openjdk-8-maven java/maven 8
+  - script/build-image.sh openjdk-9-maven java/maven 9

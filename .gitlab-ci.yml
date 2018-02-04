@@ -13,6 +13,7 @@ stages:
   - build-base
   - build-base-lang
   - build-cpp-compiler
+  - build-java-maven
   - release
 
 
@@ -87,6 +88,27 @@ build-arm-none-eabi-gcc:
   script:
     - script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc 7
 
+
+# -----------------------------------------
+# --- Java
+# -----------------------------------------
+build-openjdk-9-maven:
+  <<: *build_job_base
+  stage: build-java-maven
+  script:
+    - script/build-image.sh openjdk-9-maven java/maven 9
+
+build-openjdk-8-maven:
+  <<: *build_job_base
+  stage: build-java-maven
+  script:
+    - script/build-image.sh openjdk-8-maven java/maven 8
+
+build-openjdk-7-maven:
+  <<: *build_job_base
+  stage: build-java-maven
+  script:
+    - script/build-image.sh openjdk-7-maven java/maven 7
 
 
 # -----------------------------------------
