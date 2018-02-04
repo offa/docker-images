@@ -116,14 +116,20 @@ build-openjdk-7-maven:
 release-stable:
   stage: release
   script:
+    # Base
     - script/release-image.sh docker-build
     - script/release-image.sh base
+    # C++
     - script/release-image.sh base-cpp
     - script/release-image.sh gcc-7
     - script/release-image.sh gcc-6
     - script/release-image.sh clang-5
     - script/release-image.sh clang-4
     - script/release-image.sh arm-none-eabi-gcc
+    # Java
+    - script/release-image.sh openjdk-9-maven
+    - script/release-image.sh openjdk-8-maven
+    - script/release-image.sh openjdk-7-maven
   only:
     - master
 
