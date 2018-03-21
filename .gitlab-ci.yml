@@ -139,6 +139,7 @@ release-stable:
     - script/release-image.sh clang-4
     - script/release-image.sh arm-none-eabi-gcc
     # Java
+    - script/release-image.sh openjdk-10-maven
     - script/release-image.sh openjdk-9-maven
     - script/release-image.sh openjdk-8-maven
     - script/release-image.sh openjdk-7-maven
