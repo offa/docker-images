@@ -97,6 +97,11 @@ build-arm-none-eabi-gcc:
 # -----------------------------------------
 # --- Java
 # -----------------------------------------
+build-openjdk-10-maven:
+  <<: *build_job_base
+  stage: build-lang-specific
+  script:
+    - script/build-image.sh openjdk-10-maven java/maven 10
 build-openjdk-9-maven:
   <<: *build_job_base
   stage: build-lang-specific
