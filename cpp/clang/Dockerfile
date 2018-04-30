@@ -1,4 +1,4 @@
-ARG VERSION=5
+ARG VERSION=6
 
 FROM registry.gitlab.com/offa/docker-images/base-cpp:latest
 
