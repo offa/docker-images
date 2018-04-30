@@ -74,24 +74,28 @@ build-clang-6:
   stage: build-lang-specific
   script:
     - script/build-image.sh clang-6 cpp/clang 6
+  allow_failure: true # See #41
 
 build-clang-5:
   <<: *build_job_base
   stage: build-lang-specific
   script:
     - script/build-image.sh clang-5 cpp/clang 5
+  allow_failure: true # See #41
 
 build-clang-4:
   <<: *build_job_base
   stage: build-lang-specific
   script:
     - script/build-image.sh clang-4 cpp/clang 4
+  allow_failure: true # See #41
 
 build-arm-none-eabi-gcc:
   <<: *build_job_base
   stage: build-lang-specific
   script:
     - script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc 7
+  allow_failure: true # See #42
 
 
 # -----------------------------------------
