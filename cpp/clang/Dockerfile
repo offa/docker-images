@@ -17,7 +17,7 @@ RUN LLVM_RELEASE=release_${VERSION}0 && \
     git clone --depth=1 -b ${LLVM_RELEASE} https://github.com/llvm-mirror/llvm.git llvm-source && \
     git clone --depth=1 -b ${LLVM_RELEASE} https://github.com/llvm-mirror/libcxx.git llvm-source/projects/libcxx && \
     git clone --depth=1 -b ${LLVM_RELEASE} https://github.com/llvm-mirror/libcxxabi.git llvm-source/projects/libcxxabi && \
-    if [ "${VERSION}" == "4" ]; then ln -s /usr/include/locale.h /usr/include/xlocale.h; fi && \
+    if [ "${VERSION}" == "4" ]; then ln -s /usr/include/locale.h /usr/include/xlocale.h; echo "Workaround for Clang 4 (xlocale.h)"; fi && \
     mkdir -p build && cd build && \
     cmake -DCMAKE_C_COMPILER=${CC} \
         -DCMAKE_CXX_COMPILER=${CXX} \
