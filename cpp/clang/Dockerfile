@@ -8,9 +8,8 @@ ENV CC=clang-${VERSION}.0 CXX=clang++-${VERSION}.0
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test && \
     curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
     case ${VERSION} in \
-        "4") add-apt-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-${VERSION}.0 main" ;;
-        "5") add-apt-repository "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-${VERSION}.0 main" ;;
-        "6") add-apt-repository "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-${VERSION}.0 main" ;;
+        "4") add-apt-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-${VERSION}.0 main" ;; \
+        "5"|"6") add-apt-repository "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-${VERSION}.0 main" ;; \
     esac; \
     apt-get update && \
     apt-get install -y --no-install-recommends clang-${VERSION}.0
