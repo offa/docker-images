@@ -1,4 +1,4 @@
-ARG VERSION=9
+ARG VERSION=10
 
 FROM maven:3-jdk-${VERSION}
 
