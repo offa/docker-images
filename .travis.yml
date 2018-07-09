@@ -30,7 +30,7 @@ script:
   - script/build-image.sh clang-6 cpp/clang 6
   - script/build-image.sh clang-5 cpp/clang 5
   - script/build-image.sh clang-4 cpp/clang 4
-  #- script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc 7 # See #42
+  - script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc 7
   # Java
   - script/build-image.sh openjdk-7-maven java/maven 7
   - script/build-image.sh openjdk-8-maven java/maven 8
