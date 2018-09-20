@@ -15,6 +15,5 @@ Docker Images.
 
 Following Images are deprecated and will be removed in the future:
 
-- Clang 4.0
 - OpenJDK 7
 
