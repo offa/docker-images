@@ -3,19 +3,22 @@ ARG VERSION=6
 FROM registry.gitlab.com/offa/docker-images/base-cpp:latest
 
 ARG VERSION
-ENV CC=clang-${VERSION}.0 CXX=clang++-${VERSION}.0
+ENV CC=clang-${VERSION} CXX=clang++-${VERSION}
 
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test && \
     curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
     case ${VERSION} in \
-        "4") add-apt-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-${VERSION}.0 main" ;; \
-        *) add-apt-repository "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-${VERSION}.0 main" ;; \
+        "4") add-apt-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-${VERSION} main" ;; \
+        *) add-apt-repository "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-${VERSION} main" ;; \
     esac; \
     apt-get update && \
-    apt-get install -y --no-install-recommends clang-${VERSION}.0
+    apt-get install -y --no-install-recommends clang-${VERSION}
 
 
-RUN LLVM_RELEASE=release_${VERSION}0 && \
+RUN LLVM_RELEASE=release_$(echo ${VERSION} | sed -e "s/\.//g") && \
+    if echo "${VERSION}" | grep -q "7"; then \
+        LLVM_RELEASE="${LLVM_RELEASE}0"; \
+    fi && \
     mkdir -p deps && cd deps && \
     git clone --depth=1 -b ${LLVM_RELEASE} https://github.com/llvm-mirror/llvm.git llvm-source && \
     git clone --depth=1 -b ${LLVM_RELEASE} https://github.com/llvm-mirror/libcxx.git llvm-source/projects/libcxx && \

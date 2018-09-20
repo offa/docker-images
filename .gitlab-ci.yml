@@ -75,23 +75,29 @@ build-gcc-6:
   script:
     - script/build-image.sh gcc-6 cpp/gcc 6
 
+build-clang-7:
+  <<: *build_job_base
+  stage: build-lang-specific
+  script:
+    - script/build-image.sh clang-7 cpp/clang 7
+
 build-clang-6:
   <<: *build_job_base
   stage: build-lang-specific
   script:
-    - script/build-image.sh clang-6 cpp/clang 6
+    - script/build-image.sh clang-6 cpp/clang 6.0
 
 build-clang-5:
   <<: *build_job_base
   stage: build-lang-specific
   script:
-    - script/build-image.sh clang-5 cpp/clang 5
+    - script/build-image.sh clang-5 cpp/clang 5.0
 
 build-clang-4:
   <<: *build_job_base
   stage: build-lang-specific
   script:
-    - script/build-image.sh clang-4 cpp/clang 4
+    - script/build-image.sh clang-4 cpp/clang 4.0
 
 build-arm-none-eabi-gcc:
   <<: *build_job_base
@@ -141,9 +147,10 @@ release-stable:
     - script/release-image.sh gcc-8
     - script/release-image.sh gcc-7
     - script/release-image.sh gcc-6
-    - script/release-image.sh clang-6
-    - script/release-image.sh clang-5
-    - script/release-image.sh clang-4
+    - script/release-image.sh clang-7
+    - script/release-image.sh clang-6.0
+    - script/release-image.sh clang-5.0
+    - script/release-image.sh clang-4.0
     - script/release-image.sh arm-none-eabi-gcc
     # Java
     - script/release-image.sh openjdk-10-maven
