@@ -10,10 +10,3 @@ Docker Images.
 
 **Registry:** https://gitlab.com/offa/docker-images/container_registry
 
-
-## Deprecation
-
-Following Images are deprecated and will be removed in the future:
-
-- OpenJDK 7
-
