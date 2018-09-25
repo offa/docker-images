@@ -120,12 +120,6 @@ build-openjdk-8-maven:
   script:
     - script/build-image.sh openjdk-8-maven java/maven 8
 
-build-openjdk-7-maven:
-  <<: *build_job_base
-  stage: build-lang-specific
-  script:
-    - script/build-image.sh openjdk-7-maven java/maven 7
-
 
 # -----------------------------------------
 # --- Release
@@ -149,7 +143,6 @@ release-stable:
     - script/release-image.sh openjdk-10-maven
     - script/release-image.sh openjdk-9-maven
     - script/release-image.sh openjdk-8-maven
-    - script/release-image.sh openjdk-7-maven
   only:
     - master
 
