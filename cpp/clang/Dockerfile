@@ -14,20 +14,21 @@ RUN add-apt-repository ppa:ubuntu-toolchain-r/test && \
 
 RUN LLVM_RELEASE=release_$(echo ${VERSION} | sed -e "s/\.//g") && \
     if echo "${VERSION}" | grep -q "7"; then \
-        LLVM_RELEASE="${LLVM_RELEASE}0"; \
-    fi && \
-    mkdir -p deps && cd deps && \
-    git clone --depth=1 -b ${LLVM_RELEASE} https://github.com/llvm-mirror/llvm.git llvm-source && \
-    git clone --depth=1 -b ${LLVM_RELEASE} https://github.com/llvm-mirror/libcxx.git llvm-source/projects/libcxx && \
-    git clone --depth=1 -b ${LLVM_RELEASE} https://github.com/llvm-mirror/libcxxabi.git llvm-source/projects/libcxxabi && \
-    mkdir -p build && cd build && \
-    cmake -DCMAKE_C_COMPILER=${CC} \
-        -DCMAKE_CXX_COMPILER=${CXX} \
-        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DLIBCXX_ABI_UNSTABLE=ON \
-        ../llvm-source && \
-    make cxx -j4 && \
-    make install-cxxabi install-cxx && \
-    cd ../.. && rm -rf deps
+        apt-get install -y --no-install-recommends libc++-7-dev libc++abi-7-dev; \
+    else \
+        mkdir -p deps && cd deps && \
+        git clone --depth=1 -b ${LLVM_RELEASE} https://github.com/llvm-mirror/llvm.git llvm-source && \
+        git clone --depth=1 -b ${LLVM_RELEASE} https://github.com/llvm-mirror/libcxx.git llvm-source/projects/libcxx && \
+        git clone --depth=1 -b ${LLVM_RELEASE} https://github.com/llvm-mirror/libcxxabi.git llvm-source/projects/libcxxabi && \
+        mkdir -p build && cd build && \
+        cmake -DCMAKE_C_COMPILER=${CC} \
+            -DCMAKE_CXX_COMPILER=${CXX} \
+            -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+            -DCMAKE_INSTALL_PREFIX=/usr \
+            -DLIBCXX_ABI_UNSTABLE=ON \
+            ../llvm-source && \
+        make cxx -j4 && \
+        make install-cxxabi install-cxx && \
+        cd ../.. && rm -rf deps; \
+    fi
 
