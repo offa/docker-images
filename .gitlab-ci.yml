@@ -97,7 +97,7 @@ build-arm-none-eabi-gcc:
   <<: *build_job_base
   stage: build-lang-specific
   script:
-    - script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc 7
+    - script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc 8
 
 
 # -----------------------------------------
