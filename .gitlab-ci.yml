@@ -75,6 +75,12 @@ build-gcc-6:
   script:
     - script/build-image.sh gcc-6 cpp/gcc 6
 
+build-clang-8:
+  <<: *build_job_base
+  stage: build-lang-specific
+  script:
+    - script/build-image.sh clang-8 cpp/clang 8
+
 build-clang-7:
   <<: *build_job_base
   stage: build-lang-specific
@@ -148,6 +154,7 @@ release-stable:
     - script/release-image.sh gcc-8
     - script/release-image.sh gcc-7
     - script/release-image.sh gcc-6
+    - script/release-image.sh clang-8
     - script/release-image.sh clang-7
     - script/release-image.sh clang-6
     - script/release-image.sh clang-5
