@@ -20,15 +20,11 @@ before_script:
   - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
 
 
-.build_template: &build_job_base
-  retry: 1
-
 
 # -----------------------------------------
 # --- Docker Images
 # -----------------------------------------
 build-docker-build:
-  <<: *build_job_base
   stage: build-docker
   script:
     - script/build-image.sh docker-build docker/docker-build
@@ -38,7 +34,6 @@ build-docker-build:
 # --- Base Images
 # -----------------------------------------
 build-base:
-  <<: *build_job_base
   stage: build-base
   script:
     - script/build-image.sh base base
@@ -48,7 +43,6 @@ build-base:
 # --- Language Base Images
 # -----------------------------------------
 build-base-cpp:
-  <<: *build_job_base
   stage: build-lang-base
   script:
     - script/build-image.sh base-cpp cpp/base
@@ -58,55 +52,46 @@ build-base-cpp:
 # --- C++ and C Images
 # -----------------------------------------
 build-gcc-9:
-  <<: *build_job_base
   stage: build-lang-specific
   script:
     - script/build-image.sh gcc-9 cpp/gcc 9
 
 build-gcc-8:
-  <<: *build_job_base
   stage: build-lang-specific
   script:
     - script/build-image.sh gcc-8 cpp/gcc 8
 
 build-gcc-7:
-  <<: *build_job_base
   stage: build-lang-specific
   script:
     - script/build-image.sh gcc-7 cpp/gcc 7
 
 build-gcc-6:
-  <<: *build_job_base
   stage: build-lang-specific
   script:
     - script/build-image.sh gcc-6 cpp/gcc 6
 
 build-clang-8:
-  <<: *build_job_base
   stage: build-lang-specific
   script:
     - script/build-image.sh clang-8 cpp/clang 8
 
 build-clang-7:
-  <<: *build_job_base
   stage: build-lang-specific
   script:
     - script/build-image.sh clang-7 cpp/clang 7
 
 build-clang-6:
-  <<: *build_job_base
   stage: build-lang-specific
   script:
     - script/build-image.sh clang-6 cpp/clang 6.0
 
 build-clang-5:
-  <<: *build_job_base
   stage: build-lang-specific
   script:
     - script/build-image.sh clang-5 cpp/clang 5.0
 
 build-arm-none-eabi-gcc:
-  <<: *build_job_base
   stage: build-lang-specific
   script:
     - script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc 8
@@ -116,31 +101,26 @@ build-arm-none-eabi-gcc:
 # --- Java
 # -----------------------------------------
 build-openjdk-12-maven:
-  <<: *build_job_base
   stage: build-lang-specific
   script:
     - script/build-image.sh openjdk-12-maven java/maven 12
 
 build-openjdk-11-maven:
-  <<: *build_job_base
   stage: build-lang-specific
   script:
     - script/build-image.sh openjdk-11-maven java/maven 11
 
 build-openjdk-10-maven:
-  <<: *build_job_base
   stage: build-lang-specific
   script:
     - script/build-image.sh openjdk-10-maven java/maven 10
 
 build-openjdk-9-maven:
-  <<: *build_job_base
   stage: build-lang-specific
   script:
     - script/build-image.sh openjdk-9-maven java/maven 9
 
 build-openjdk-8-maven:
-  <<: *build_job_base
   stage: build-lang-specific
   script:
     - script/build-image.sh openjdk-8-maven java/maven 8
