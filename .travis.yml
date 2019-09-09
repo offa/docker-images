@@ -37,4 +37,4 @@ script:
   - script/build-image.sh openjdk-9-maven java/maven 9
   - script/build-image.sh openjdk-10-maven java/maven 10
   - script/build-image.sh openjdk-11-maven java/maven 11
-  - script/build-image.sh openjdk-11-maven java/maven 12
+  - script/build-image.sh openjdk-12-maven java/maven 12
