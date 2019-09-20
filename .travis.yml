@@ -23,12 +23,12 @@ script:
   - script/build-image.sh base base
   # C++
   - script/build-image.sh base-cpp cpp/base
-  - script/build-image.sh gcc-8 cpp/gcc 9
+  - script/build-image.sh gcc-9 cpp/gcc 9
   - script/build-image.sh gcc-8 cpp/gcc 8
   - script/build-image.sh gcc-7 cpp/gcc 7
   - script/build-image.sh gcc-6 cpp/gcc 6
   - script/build-image.sh clang-9 cpp/clang 9
-  - script/build-image.sh clang-7 cpp/clang 8
+  - script/build-image.sh clang-8 cpp/clang 8
   - script/build-image.sh clang-7 cpp/clang 7
   - script/build-image.sh clang-6 cpp/clang 6.0
   - script/build-image.sh clang-5 cpp/clang 5.0
