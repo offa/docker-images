@@ -27,6 +27,7 @@ script:
   - script/build-image.sh gcc-8 cpp/gcc 8
   - script/build-image.sh gcc-7 cpp/gcc 7
   - script/build-image.sh gcc-6 cpp/gcc 6
+  - script/build-image.sh clang-9 cpp/clang 9
   - script/build-image.sh clang-7 cpp/clang 8
   - script/build-image.sh clang-7 cpp/clang 7
   - script/build-image.sh clang-6 cpp/clang 6.0
