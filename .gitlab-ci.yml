@@ -105,6 +105,11 @@ build-arm-none-eabi-gcc:
 # -----------------------------------------
 # --- Java
 # -----------------------------------------
+build-openjdk-14-maven:
+  stage: build-lang-specific
+  script:
+    - script/build-image.sh openjdk-13-maven java/maven 14
+
 build-openjdk-13-maven:
   stage: build-lang-specific
   script:
@@ -158,6 +163,7 @@ release-stable:
     - script/release-image.sh clang-5
     - script/release-image.sh arm-none-eabi-gcc
     # Java
+    - script/release-image.sh openjdk-14-maven
     - script/release-image.sh openjdk-13-maven
     - script/release-image.sh openjdk-12-maven
     - script/release-image.sh openjdk-11-maven
@@ -166,4 +172,3 @@ release-stable:
     - script/release-image.sh openjdk-8-maven
   only:
     - master
-
