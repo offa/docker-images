@@ -108,7 +108,7 @@ build-arm-none-eabi-gcc:
 build-openjdk-14-maven:
   stage: build-lang-specific
   script:
-    - script/build-image.sh openjdk-13-maven java/maven 14
+    - script/build-image.sh openjdk-14-maven java/maven 14
 
 build-openjdk-13-maven:
   stage: build-lang-specific
