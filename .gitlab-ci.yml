@@ -51,6 +51,11 @@ build-base-cpp:
 # -----------------------------------------
 # --- C++ and C Images
 # -----------------------------------------
+build-gcc-10:
+  stage: build-lang-specific
+  script:
+    - script/build-image.sh gcc-10 cpp/gcc 10
+
 build-gcc-9:
   stage: build-lang-specific
   script:
@@ -157,6 +162,7 @@ release-stable:
     - script/release-image.sh base
     # C++
     - script/release-image.sh base-cpp
+    - script/release-image.sh gcc-10
     - script/release-image.sh gcc-9
     - script/release-image.sh gcc-8
     - script/release-image.sh gcc-7
