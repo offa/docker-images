@@ -135,16 +135,6 @@ build-openjdk-11-maven:
   script:
     - script/build-image.sh openjdk-11-maven java/maven 11
 
-build-openjdk-10-maven:
-  stage: build-lang-specific
-  script:
-    - script/build-image.sh openjdk-10-maven java/maven 10
-
-build-openjdk-9-maven:
-  stage: build-lang-specific
-  script:
-    - script/build-image.sh openjdk-9-maven java/maven 9
-
 build-openjdk-8-maven:
   stage: build-lang-specific
   script:
@@ -179,8 +169,6 @@ release-stable:
     - script/release-image.sh openjdk-13-maven
     - script/release-image.sh openjdk-12-maven
     - script/release-image.sh openjdk-11-maven
-    - script/release-image.sh openjdk-10-maven
-    - script/release-image.sh openjdk-9-maven
     - script/release-image.sh openjdk-8-maven
   only:
     - master
