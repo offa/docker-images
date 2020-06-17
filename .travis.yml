@@ -5,12 +5,6 @@ dist: bionic
 services:
   - docker
 
-addons:
-  apt:
-    packages:
-      - docker-ce
-
-
 env:
   global:
     - DEPLOY_REGISTRY: "registry.gitlab.com/offa/docker-images"
