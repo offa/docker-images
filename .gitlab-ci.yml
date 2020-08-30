@@ -51,65 +51,18 @@ build-base-cpp:
 # -----------------------------------------
 # --- C++ and C Images
 # -----------------------------------------
-build-gcc-10:
+build_c_cpp:
+  parallel:
+    matrix:
+      - COMPILER: gcc
+        VERSION: [10, 9, 8, 7, 6]
+      - COMPILER: clang
+        VERSION: [10, 9, 8, 7, 6, 5]
+      - COMPILER: arm-none-eabi-gcc
+        VERSION: [9]
   stage: build-lang-specific
   script:
-    - script/build-image.sh gcc-10 cpp/gcc 10
-
-build-gcc-9:
-  stage: build-lang-specific
-  script:
-    - script/build-image.sh gcc-9 cpp/gcc 9
-
-build-gcc-8:
-  stage: build-lang-specific
-  script:
-    - script/build-image.sh gcc-8 cpp/gcc 8
-
-build-gcc-7:
-  stage: build-lang-specific
-  script:
-    - script/build-image.sh gcc-7 cpp/gcc 7
-
-build-gcc-6:
-  stage: build-lang-specific
-  script:
-    - script/build-image.sh gcc-6 cpp/gcc 6
-
-build-clang-10:
-  stage: build-lang-specific
-  script:
-    - script/build-image.sh clang-10 cpp/clang 10
-
-build-clang-9:
-  stage: build-lang-specific
-  script:
-    - script/build-image.sh clang-9 cpp/clang 9
-
-build-clang-8:
-  stage: build-lang-specific
-  script:
-    - script/build-image.sh clang-8 cpp/clang 8
-
-build-clang-7:
-  stage: build-lang-specific
-  script:
-    - script/build-image.sh clang-7 cpp/clang 7
-
-build-clang-6:
-  stage: build-lang-specific
-  script:
-    - script/build-image.sh clang-6 cpp/clang 6.0
-
-build-clang-5:
-  stage: build-lang-specific
-  script:
-    - script/build-image.sh clang-5 cpp/clang 5.0
-
-build-arm-none-eabi-gcc:
-  stage: build-lang-specific
-  script:
-    - script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc 8
+    - script/build-image.sh ${COMPILER}-${VERSION} cpp/${COMPILER} ${VERSION}
 
 
 # -----------------------------------------
