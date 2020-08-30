@@ -68,30 +68,14 @@ build_c_cpp:
 # -----------------------------------------
 # --- Java
 # -----------------------------------------
-build-openjdk-14-maven:
+build_java:
+  parallel:
+    matrix:
+      - JDK: openjdk
+        VERSION: [14, 13, 12, 11, 8]
   stage: build-lang-specific
   script:
-    - script/build-image.sh openjdk-14-maven java/maven 14
-
-build-openjdk-13-maven:
-  stage: build-lang-specific
-  script:
-    - script/build-image.sh openjdk-13-maven java/maven 13
-
-build-openjdk-12-maven:
-  stage: build-lang-specific
-  script:
-    - script/build-image.sh openjdk-12-maven java/maven 12
-
-build-openjdk-11-maven:
-  stage: build-lang-specific
-  script:
-    - script/build-image.sh openjdk-11-maven java/maven 11
-
-build-openjdk-8-maven:
-  stage: build-lang-specific
-  script:
-    - script/build-image.sh openjdk-8-maven java/maven 8
+    - script/build-image.sh ${JDK}-${VERSION}-maven java/maven ${VERSION}
 
 
 # -----------------------------------------
