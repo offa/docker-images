@@ -81,31 +81,17 @@ build_java:
 # -----------------------------------------
 # --- Release
 # -----------------------------------------
-release-stable:
+release_stable:
+  parallel:
+    matrix:
+      - CATEGORY: base
+        IMAGE: [docker-build, base]
+      - CATEGORY: c_cpp
+        IMAGE: [base-cpp, gcc-10, gcc-9, gcc-8, gcc-7, gcc-6, clang-10, clang-9, clang-8, clang-7, clang-6, clang-5, arm-none-eabi-gcc]
+      - CATEGORY: java
+        IMAGE: [openjdk-14-maven, openjdk-13-maven, openjdk-12-maven, openjdk-11-maven, openjdk-8-maven]
   stage: release
   script:
-    # Base
-    - script/release-image.sh docker-build
-    - script/release-image.sh base
-    # C++
-    - script/release-image.sh base-cpp
-    - script/release-image.sh gcc-10
-    - script/release-image.sh gcc-9
-    - script/release-image.sh gcc-8
-    - script/release-image.sh gcc-7
-    - script/release-image.sh gcc-6
-    - script/release-image.sh clang-10
-    - script/release-image.sh clang-9
-    - script/release-image.sh clang-8
-    - script/release-image.sh clang-7
-    - script/release-image.sh clang-6
-    - script/release-image.sh clang-5
-    - script/release-image.sh arm-none-eabi-gcc
-    # Java
-    - script/release-image.sh openjdk-14-maven
-    - script/release-image.sh openjdk-13-maven
-    - script/release-image.sh openjdk-12-maven
-    - script/release-image.sh openjdk-11-maven
-    - script/release-image.sh openjdk-8-maven
+    - script/release-image.sh ${IMAGE}
   only:
     - master
