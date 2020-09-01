@@ -6,32 +6,87 @@ services:
   - docker
 
 env:
-  global:
-    - DEPLOY_REGISTRY: "registry.gitlab.com/offa/docker-images"
-    - IMAGE_NO_PUSH: true
+  ## ==== Base
+  - IMAGE_NAME: "docker-build"
+    DOCKERFILE: "docker/docker-build"
 
+  - IMAGE_NAME: "base"
+    DOCKERFILE: "base"
+
+  ## ==== C / C++
+  - IMAGE_NAME: "base-cpp"
+    DOCKERFILE: "cpp/base"
+
+  - IMAGE_NAME: "gcc-10"
+    DOCKERFILE: "cpp/gcc"
+    IMG_VERSION: 10
+
+  - IMAGE_NAME: "gcc-9"
+    DOCKERFILE: "cpp/gcc"
+    IMG_VERSION: 9
+
+  - IMAGE_NAME: "gcc-8"
+    DOCKERFILE: "cpp/gcc"
+    IMG_VERSION: 8
+
+  - IMAGE_NAME: "gcc-7"
+    DOCKERFILE: "cpp/gcc"
+    IMG_VERSION: 7
+
+  - IMAGE_NAME: "gcc-6"
+    DOCKERFILE: "cpp/gcc"
+    IMG_VERSION: 6
+
+  - IMAGE_NAME: "clang-10"
+    DOCKERFILE: "cpp/clang"
+    IMG_VERSION: 10
+
+  - IMAGE_NAME: "clang-9"
+    DOCKERFILE: "cpp/clang"
+    IMG_VERSION: 9
+
+  - IMAGE_NAME: "clang-8"
+    DOCKERFILE: "cpp/clang"
+    IMG_VERSION: 8
+
+  - IMAGE_NAME: "clang-7"
+    DOCKERFILE: "cpp/clang"
+    IMG_VERSION: 7
+
+  - IMAGE_NAME: "clang-6"
+    DOCKERFILE: "cpp/clang"
+    IMG_VERSION: 6.0
+
+  - IMAGE_NAME: "clang-5"
+    DOCKERFILE: "cpp/clang"
+    IMG_VERSION: 5.0
+
+  - IMAGE_NAME: "arm-none-eabi-gcc"
+    DOCKERFILE: "cpp/arm-none-eabi-gcc"
+    IMG_VERSION: 9
+
+  ## ==== Java
+  - IMAGE_NAME: "openjdk-14-maven"
+    DOCKERFILE: "java/maven"
+    IMG_VERSION: 14
+
+  - IMAGE_NAME: "openjdk-13-maven"
+    DOCKERFILE: "java/maven"
+    IMG_VERSION: 13
+
+  - IMAGE_NAME: "openjdk-12-maven"
+    DOCKERFILE: "java/maven"
+    IMG_VERSION: 12
+
+  - IMAGE_NAME: "openjdk-11-maven"
+    DOCKERFILE: "java/maven"
+    IMG_VERSION: 11
+
+  - IMAGE_NAME: "openjdk-8-maven"
+    DOCKERFILE: "java/maven"
+    IMG_VERSION: 8
 
 script:
-  # Base
-  - script/build-image.sh docker-build docker/docker-build
-  - script/build-image.sh base base
-  # C++
-  - script/build-image.sh base-cpp cpp/base
-  - script/build-image.sh gcc-10 cpp/gcc 10
-  - script/build-image.sh gcc-9 cpp/gcc 9
-  - script/build-image.sh gcc-8 cpp/gcc 8
-  - script/build-image.sh gcc-7 cpp/gcc 7
-  - script/build-image.sh gcc-6 cpp/gcc 6
-  - script/build-image.sh clang-10 cpp/clang 10
-  - script/build-image.sh clang-9 cpp/clang 9
-  - script/build-image.sh clang-8 cpp/clang 8
-  - script/build-image.sh clang-7 cpp/clang 7
-  - script/build-image.sh clang-6 cpp/clang 6.0
-  - script/build-image.sh clang-5 cpp/clang 5.0
-  - script/build-image.sh arm-none-eabi-gcc cpp/arm-none-eabi-gcc 8
-  # Java
-  - script/build-image.sh openjdk-8-maven java/maven 8
-  - script/build-image.sh openjdk-11-maven java/maven 11
-  - script/build-image.sh openjdk-12-maven java/maven 12
-  - script/build-image.sh openjdk-13-maven java/maven 13
-  - script/build-image.sh openjdk-13-maven java/maven 14
+  - export DEPLOY_REGISTRY="registry.gitlab.com/offa/docker-images"
+  - export IMAGE_NO_PUSH=true
+  - script/build-image.sh ${IMAGE_NAME} ${DOCKERFILE} ${IMG_VERSION}
