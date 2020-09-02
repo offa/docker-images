@@ -62,7 +62,13 @@ build_c_cpp:
         VERSION: [9]
   stage: build-lang-specific
   script:
-    - script/build-image.sh ${COMPILER}-${VERSION} cpp/${COMPILER} ${VERSION}
+    - >
+      if [ "${COMPILER}-${VERSION}" = "clang-6" ] || [ "${COMPILER}-${VERSION}" = "clang-5" ]; then
+        export VERSION_ARG="${VERSION}.0"
+      else
+        export VERSION_ARG="${VERSION}"
+      fi
+    - script/build-image.sh ${COMPILER}-${VERSION} cpp/${COMPILER} ${VERSION_ARG}
 
 
 # -----------------------------------------
