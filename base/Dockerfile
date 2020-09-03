@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 RUN  apt-get update &&  \
         apt-get install -y --no-install-recommends software-properties-common && \
@@ -6,4 +6,3 @@ RUN  apt-get update &&  \
         apt-get update && \
         apt-get install -y --no-install-recommends git curl gnupg-agent && \
         apt-get autoclean && apt-get autoremove -y
-
