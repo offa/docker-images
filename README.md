@@ -14,3 +14,4 @@ Docker Images.
 ### Deprecation
 
 - [**gcc-6**](https://gitlab.com/offa/docker-images/-/issues/89) will be removed with the next base image update
+- [**clang-5** and **clang-6**](https://gitlab.com/offa/docker-images/-/issues/90) will be removed with the next base image update
