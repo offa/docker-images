@@ -33,10 +33,6 @@ env:
     DOCKERFILE: "cpp/gcc"
     IMG_VERSION: 7
 
-  - IMAGE_NAME: "gcc-6"
-    DOCKERFILE: "cpp/gcc"
-    IMG_VERSION: 6
-
   - IMAGE_NAME: "clang-10"
     DOCKERFILE: "cpp/clang"
     IMG_VERSION: 10
