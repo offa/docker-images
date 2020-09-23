@@ -49,14 +49,6 @@ env:
     DOCKERFILE: "cpp/clang"
     IMG_VERSION: 7
 
-  - IMAGE_NAME: "clang-6"
-    DOCKERFILE: "cpp/clang"
-    IMG_VERSION: 6.0
-
-  - IMAGE_NAME: "clang-5"
-    DOCKERFILE: "cpp/clang"
-    IMG_VERSION: 5.0
-
   - IMAGE_NAME: "arm-none-eabi-gcc"
     DOCKERFILE: "cpp/arm-none-eabi-gcc"
     IMG_VERSION: 9
