@@ -10,3 +10,7 @@ Docker Images.
 
 **Registry:** https://gitlab.com/offa/docker-images/container_registry
 
+
+### Deprecation
+
+- [**gcc-6**](https://gitlab.com/offa/docker-images/-/issues/89) will be removed with the next base image update
