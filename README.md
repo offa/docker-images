@@ -15,3 +15,4 @@ Docker Images.
 
 - [**gcc-6**](https://gitlab.com/offa/docker-images/-/issues/89) will be removed with the next base image update
 - [**clang-5** and **clang-6**](https://gitlab.com/offa/docker-images/-/issues/90) will be removed with the next base image update
+- [**openjdk-*-maven**](https://gitlab.com/offa/docker-images/-/issues/86) will be removed in the near future, use `maven:3-jdk-*` instead
