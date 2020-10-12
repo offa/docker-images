@@ -65,26 +65,6 @@ env:
     DOCKERFILE: "cpp/arm-none-eabi-gcc"
     IMG_VERSION: 9
 
-  ## ==== Java
-  - IMAGE_NAME: "openjdk-14-maven"
-    DOCKERFILE: "java/maven"
-    IMG_VERSION: 14
-
-  - IMAGE_NAME: "openjdk-13-maven"
-    DOCKERFILE: "java/maven"
-    IMG_VERSION: 13
-
-  - IMAGE_NAME: "openjdk-12-maven"
-    DOCKERFILE: "java/maven"
-    IMG_VERSION: 12
-
-  - IMAGE_NAME: "openjdk-11-maven"
-    DOCKERFILE: "java/maven"
-    IMG_VERSION: 11
-
-  - IMAGE_NAME: "openjdk-8-maven"
-    DOCKERFILE: "java/maven"
-    IMG_VERSION: 8
 
 script:
   - export DEPLOY_REGISTRY="registry.gitlab.com/offa/docker-images"
