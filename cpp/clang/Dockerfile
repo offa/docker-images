@@ -13,7 +13,9 @@ RUN add-apt-repository ppa:ubuntu-toolchain-r/test && \
 
 
 RUN LLVM_RELEASE=release_$(echo ${VERSION} | sed -e "s/\.//g") && \
-    if echo "${VERSION}" | grep -q "10"; then \
+    if echo "${VERSION}" | grep -q "11"; then \
+        apt-get install -y --no-install-recommends libc++-11-dev libc++abi-11-dev; \
+    elif echo "${VERSION}" | grep -q "10"; then \
         apt-get install -y --no-install-recommends libc++-10-dev libc++abi-10-dev; \
     elif echo "${VERSION}" | grep -q "9"; then \
         apt-get install -y --no-install-recommends libc++-9-dev libc++abi-9-dev; \
