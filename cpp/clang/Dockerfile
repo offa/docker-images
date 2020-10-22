@@ -1,4 +1,4 @@
-ARG VERSION=8
+ARG VERSION=10
 
 FROM registry.gitlab.com/offa/docker-images/base-cpp:latest
 
@@ -12,6 +12,5 @@ RUN add-apt-repository ppa:ubuntu-toolchain-r/test && \
     fi && \
     apt-get update && \
     apt-get install -y --no-install-recommends clang-${VERSION}
-
 
 RUN apt-get install -y --no-install-recommends libc++-${VERSION}-dev libc++abi-${VERSION}-dev

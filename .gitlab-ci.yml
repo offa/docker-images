@@ -65,18 +65,6 @@ build_c_cpp:
     - script/build-image.sh ${COMPILER}-${VERSION} cpp/${COMPILER} ${VERSION}
 
 
-# -----------------------------------------
-# --- Java
-# -----------------------------------------
-build_java:
-  parallel:
-    matrix:
-      - JDK: openjdk
-        VERSION: [14, 13, 12, 11, 8]
-  stage: build-lang-specific
-  script:
-    - script/build-image.sh ${JDK}-${VERSION}-maven java/maven ${VERSION}
-
 
 # -----------------------------------------
 # --- Release
@@ -88,8 +76,6 @@ release_stable:
         IMAGE: [docker-build, base]
       - CATEGORY: c_cpp
         IMAGE: [base-cpp, gcc-10, gcc-9, gcc-8, gcc-7, clang-10, clang-9, clang-8, clang-7, arm-none-eabi-gcc-9]
-      - CATEGORY: java
-        IMAGE: [openjdk-14-maven, openjdk-13-maven, openjdk-12-maven, openjdk-11-maven, openjdk-8-maven]
   stage: release
   script:
     - script/release-image.sh ${IMAGE}
