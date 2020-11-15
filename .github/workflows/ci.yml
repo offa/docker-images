@@ -2,6 +2,10 @@ name: ci
 
 on: [push, pull_request]
 
+env:
+  DEPLOY_REGISTRY: "registry.gitlab.com/offa/docker-images"
+  IMAGE_NO_PUSH: true
+
 jobs:
   build_base:
     runs-on: ubuntu-20.04
@@ -11,12 +15,12 @@ jobs:
           - { name: "docker-build", dockerfile: "docker/docker-build" }
           - { name: "base", dockerfile: "base" }
     name: "(Base) ${{ matrix.build_config.name }}"
+    env:
+      DEPLOY_REGISTRY: "registry.gitlab.com/offa/docker-images"
+      IMAGE_NO_PUSH: true
     steps:
       - uses: actions/checkout@master
       - name: Build
-        env:
-          DEPLOY_REGISTRY: "registry.gitlab.com/offa/docker-images"
-          IMAGE_NO_PUSH: true
         run: script/build-image.sh ${{ matrix.build_config.name }} ${{ matrix.build_config.dockerfile }}
 
 
@@ -39,8 +43,8 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Build
-        env:
-          DEPLOY_REGISTRY: "registry.gitlab.com/offa/docker-images"
-          IMAGE_NO_PUSH: true
         run: |
-          script/build-image.sh ${{ matrix.build_config.compiler }}-${{ matrix.build_config.version }} cpp/${{ matrix.build_config.compiler }} ${{ matrix.build_config.version }}
+          script/build-image.sh \
+              ${{ matrix.build_config.compiler }}-${{ matrix.build_config.version }} \
+              cpp/${{ matrix.build_config.compiler }} \
+              ${{ matrix.build_config.version }}
