@@ -1,0 +1,46 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  build_base:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        build_config:
+          - { name: "docker-build", dockerfile: "docker/docker-build" }
+          - { name: "base", dockerfile: "base" }
+    name: "(Base) ${{ matrix.build_config.name }}"
+    steps:
+      - uses: actions/checkout@master
+      - name: Build
+        env:
+          DEPLOY_REGISTRY: "registry.gitlab.com/offa/docker-images"
+          IMAGE_NO_PUSH: true
+        run: script/build-image.sh ${{ matrix.build_config.name }} ${{ matrix.build_config.dockerfile }}
+
+
+  build_c_cpp:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        build_config:
+          - { compiler: "gcc", version: 10 }
+          - { compiler: "gcc", version: 9 }
+          - { compiler: "gcc", version: 8 }
+          - { compiler: "gcc", version: 7 }
+          - { compiler: "clang", version: 11 }
+          - { compiler: "clang", version: 10 }
+          - { compiler: "clang", version: 9 }
+          - { compiler: "clang", version: 8 }
+          - { compiler: "clang", version: 7 }
+          - { compiler: "arm-none-eabi-gcc", version: 9 }
+    name: "(C / C++) ${{ matrix.build_config.compiler }}-${{ matrix.build_config.version }}"
+    steps:
+      - uses: actions/checkout@master
+      - name: Build
+        env:
+          DEPLOY_REGISTRY: "registry.gitlab.com/offa/docker-images"
+          IMAGE_NO_PUSH: true
+        run: |
+          script/build-image.sh ${{ matrix.build_config.compiler }}-${{ matrix.build_config.version }} cpp/${{ matrix.build_config.compiler }} ${{ matrix.build_config.version }}
