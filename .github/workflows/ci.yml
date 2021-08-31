@@ -18,7 +18,7 @@ jobs:
       DEPLOY_REGISTRY: "registry.gitlab.com/offa/docker-images"
       IMAGE_NO_PUSH: true
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
       - name: Build
         run: script/build-image.sh ${{ matrix.build_config.name }} ${{ matrix.build_config.dockerfile }}
 
@@ -42,7 +42,7 @@ jobs:
           - { compiler: "arm-none-eabi-gcc", version: 10 }
     name: "(C / C++) ${{ matrix.build_config.compiler }}-${{ matrix.build_config.version }}"
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
       - name: Build
         run: |
           script/build-image.sh \
