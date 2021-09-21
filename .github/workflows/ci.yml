@@ -8,7 +8,7 @@ env:
 
 jobs:
   build_base:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         build_config:
@@ -24,7 +24,7 @@ jobs:
 
 
   build_c_cpp:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         build_config:
