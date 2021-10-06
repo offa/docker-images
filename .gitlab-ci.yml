@@ -47,7 +47,7 @@ build_c_cpp:
       - COMPILER: gcc
         VERSION: [11, 10, 9, 8, 7]
       - COMPILER: clang
-        VERSION: [12, 11, 10, 9, 8, 7]
+        VERSION: [13, 12, 11, 10, 9, 8, 7]
       - COMPILER: arm-none-eabi-gcc
         VERSION: [10]
   stage: build-lang-specific
@@ -65,7 +65,7 @@ release_stable:
       - CATEGORY: base
         IMAGE: [base]
       - CATEGORY: c_cpp
-        IMAGE: [base-cpp, gcc-11, gcc-10, gcc-9, gcc-8, gcc-7, clang-12, clang-11, clang-10, clang-9, clang-8, clang-7, arm-none-eabi-gcc-10]
+        IMAGE: [base-cpp, gcc-11, gcc-10, gcc-9, gcc-8, gcc-7, clang-13, clang-12, clang-11, clang-10, clang-9, clang-8, clang-7, arm-none-eabi-gcc-10]
   stage: release
   script:
     - script/release-image.sh ${IMAGE}
