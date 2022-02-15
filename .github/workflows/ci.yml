@@ -50,3 +50,20 @@ jobs:
               ${{ matrix.build_config.compiler }}-${{ matrix.build_config.version }} \
               cpp/${{ matrix.build_config.compiler }} \
               ${{ matrix.build_config.version }}
+
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        paths:
+          - base
+          - cpp/arm-none-eabi-gcc
+          - cpp/base
+          - cpp/clang
+          - cpp/gcc
+    name: "Hadolint - ${{ matrix.paths }}"
+    steps:
+      - uses: actions/checkout@main
+      - uses: hadolint/hadolint-action@v1.6.0
+        with:
+          dockerfile: ${{ matrix.paths }}/Dockerfile
