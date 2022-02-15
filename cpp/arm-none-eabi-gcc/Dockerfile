@@ -1,5 +1,6 @@
 ARG VERSION=10
 
+# hadolint ignore=DL3007
 FROM registry.gitlab.com/offa/docker-images/base-cpp:latest
 
 ARG VERSION

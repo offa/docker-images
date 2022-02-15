@@ -1,3 +1,4 @@
+# hadolint ignore=DL3007
 FROM registry.gitlab.com/offa/docker-images/base:latest
 
 RUN apt-get update && apt-get install -y --no-install-recommends build-essential
