@@ -8,7 +8,9 @@ ENV CC=clang-${VERSION} CXX=clang++-${VERSION}
 
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test && \
     if [ ${VERSION} -ge 9 ]; then \
-        curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
+        curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key --output llvm.gpg.key && \
+        apt-key add llvm.gpg.key && \
+        rm llvm.gpg.key && \
         add-apt-repository "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-${VERSION} main"; \
     fi && \
     apt-get update && \
