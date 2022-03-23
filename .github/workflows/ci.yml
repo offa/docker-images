@@ -53,17 +53,9 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        paths:
-          - base
-          - cpp/arm-none-eabi-gcc
-          - cpp/base
-          - cpp/clang
-          - cpp/gcc
-    name: "Hadolint - ${{ matrix.paths }}"
+    name: "Hadolint"
     steps:
       - uses: actions/checkout@main
       - uses: hadolint/hadolint-action@v1.7.0
         with:
-          dockerfile: ${{ matrix.paths }}/Dockerfile
+          recursive: true
