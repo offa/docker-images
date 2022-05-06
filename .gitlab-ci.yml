@@ -45,7 +45,7 @@ build_c_cpp:
   parallel:
     matrix:
       - COMPILER: gcc
-        VERSION: [11, 10, 9]
+        VERSION: [12, 11, 10, 9]
       - COMPILER: clang
         VERSION: [14, 13, 12, 11, 10, 9]
       - COMPILER: arm-none-eabi-gcc
@@ -67,6 +67,7 @@ release_stable:
       - CATEGORY: c_cpp
         IMAGE:
           - base-cpp
+          - gcc-12
           - gcc-11
           - gcc-10
           - gcc-9
