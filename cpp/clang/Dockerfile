@@ -11,7 +11,7 @@ RUN add-apt-repository ppa:ubuntu-toolchain-r/test && \
         curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key --output llvm.gpg.key && \
         apt-key add llvm.gpg.key && \
         rm llvm.gpg.key && \
-        if [ ${VERSION} -ge 13]; then \
+        if [ ${VERSION} -ge 13 ]; then \
             add-apt-repository "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-${VERSION} main"; \
         else \
             add-apt-repository "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-${VERSION} main"; \
