@@ -31,16 +31,12 @@ jobs:
           - { compiler: "gcc", version: 11 }
           - { compiler: "gcc", version: 10 }
           - { compiler: "gcc", version: 9 }
-          - { compiler: "gcc", version: 8 }
-          - { compiler: "gcc", version: 7 }
           - { compiler: "clang", version: 14 }
           - { compiler: "clang", version: 13 }
           - { compiler: "clang", version: 12 }
           - { compiler: "clang", version: 11 }
           - { compiler: "clang", version: 10 }
           - { compiler: "clang", version: 9 }
-          - { compiler: "clang", version: 8 }
-          - { compiler: "clang", version: 7 }
           - { compiler: "arm-none-eabi-gcc", version: 10 }
     name: "(C / C++) ${{ matrix.build_config.compiler }}-${{ matrix.build_config.version }}"
     steps:
