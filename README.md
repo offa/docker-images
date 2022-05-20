@@ -9,3 +9,13 @@
 Docker Images.
 
 **Registry:** https://gitlab.com/offa/docker-images/container_registry
+
+
+### :warning: Deprecation of older compiler versions
+
+Following compiler versions are deprecated and will be removed later, since they are no longer available on Ubuntu 22.04 LTS:
+
+- GCC 7
+- GCC 8
+- Clang 7
+- Clang 8
