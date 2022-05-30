@@ -1,15 +1,16 @@
-ARG VERSION=10
+ARG VERSION=11
 
 # hadolint ignore=DL3007
 FROM registry.gitlab.com/offa/docker-images/base-cpp:latest
 
 ARG VERSION
-RUN curl -Lo arm-none-eabi-gcc.tar.bz2 \
-        https://developer.arm.com/-/media/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2 && \
+RUN REL_VERSION="11.2-2022.02" && \
+    curl -Lo arm-none-eabi-gcc.tar.xz \
+        https://developer.arm.com/-/media/Files/downloads/gnu/${REL_VERSION}/binrel/gcc-arm-${REL_VERSION}-x86_64-arm-none-eabi.tar.xz && \
     mkdir -p /opt/arm-none-eabi && \
-    tar xjf arm-none-eabi-gcc.tar.bz2 -C /opt/arm-none-eabi/ --strip-components 1 && \
+    tar xf arm-none-eabi-gcc.tar.xz -C /opt/arm-none-eabi/ --strip-components 1 && \
     chmod -R -w /opt/arm-none-eabi && \
-    rm ./*.tar.bz2 && \
+    rm ./*.tar.xz && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
