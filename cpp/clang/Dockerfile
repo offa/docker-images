@@ -8,13 +8,14 @@ ENV CC=clang-${VERSION} CXX=clang++-${VERSION}
 
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test && \
     if [ ${VERSION} -ge 9 ]; then \
-        curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key --output llvm.gpg.key && \
-        apt-key add llvm.gpg.key && \
-        rm llvm.gpg.key && \
+        mkdir -p /etc/apt/keyrings/ && \
+        curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key --output llvm-apt.key && \
+        gpg --no-default-keyring --keyring ./keyring.gpg.tmp --import llvm-apt.key && \
+        gpg --no-default-keyring --keyring ./keyring.gpg.tmp --export --output /etc/apt/keyrings/llvm-apt.gpg && \
         if [ ${VERSION} -ge 13 ]; then \
-            add-apt-repository "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-${VERSION} main"; \
+            echo "deb [signed-by=/etc/apt/keyrings/llvm-apt.gpg] https://apt.llvm.org/jammy/ llvm-toolchain-jammy-${VERSION} main" | tee /etc/apt/sources.list.d/llvm.list; \
         else \
-            add-apt-repository "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-${VERSION} main"; \
+            echo "deb [signed-by=/etc/apt/keyrings/llvm-apt.gpg] https://apt.llvm.org/focal/ llvm-toolchain-focal-${VERSION} main" | tee /etc/apt/sources.list.d/llvm.list; \
         fi; \
     fi && \
     apt-get update && \
