@@ -13,9 +13,9 @@ RUN add-apt-repository ppa:ubuntu-toolchain-r/test && \
         gpg --no-default-keyring --keyring ./keyring.gpg.tmp --import llvm-apt.key && \
         gpg --no-default-keyring --keyring ./keyring.gpg.tmp --export --output /etc/apt/keyrings/llvm-apt.gpg && \
         if [ ${VERSION} -ge 13 ]; then \
-            echo "deb [signed-by=/etc/apt/keyrings/llvm-apt.gpg] https://apt.llvm.org/jammy/ llvm-toolchain-jammy-${VERSION} main" | tee /etc/apt/sources.list.d/llvm.list; \
+            echo "deb [signed-by=/etc/apt/keyrings/llvm-apt.gpg] https://apt.llvm.org/jammy/ llvm-toolchain-jammy-${VERSION} main" > /etc/apt/sources.list.d/llvm.list; \
         else \
-            echo "deb [signed-by=/etc/apt/keyrings/llvm-apt.gpg] https://apt.llvm.org/focal/ llvm-toolchain-focal-${VERSION} main" | tee /etc/apt/sources.list.d/llvm.list; \
+            echo "deb [signed-by=/etc/apt/keyrings/llvm-apt.gpg] https://apt.llvm.org/focal/ llvm-toolchain-focal-${VERSION} main" > /etc/apt/sources.list.d/llvm.list; \
         fi; \
     fi && \
     apt-get update && \
