@@ -1,4 +1,4 @@
-ARG VERSION=11
+ARG VERSION=12
 
 # hadolint ignore=DL3007
 FROM registry.gitlab.com/offa/docker-images/base-cpp:latest
