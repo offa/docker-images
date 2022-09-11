@@ -47,7 +47,7 @@ build_c_cpp:
       - COMPILER: gcc
         VERSION: [12, 11, 10, 9]
       - COMPILER: clang
-        VERSION: [14, 13, 12, 11, 10, 9]
+        VERSION: [15, 14, 13, 12, 11, 10, 9]
       - COMPILER: arm-none-eabi-gcc
         VERSION: [11]
   stage: build-lang-specific
