@@ -13,6 +13,7 @@ jobs:
       matrix:
         build_config:
           - { name: "base", dockerfile: "base" }
+          - { name: "base-cpp", dockerfile: "cpp/base" }
     name: "(Base) ${{ matrix.build_config.name }}"
     env:
       DEPLOY_REGISTRY: "registry.gitlab.com/offa/docker-images"
