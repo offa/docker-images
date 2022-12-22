@@ -4,7 +4,7 @@ ARG VERSION=11
 FROM registry.gitlab.com/offa/docker-images/base-cpp:latest
 
 ARG VERSION
-RUN REL_VERSION="11.3.rel1" && \
+RUN REL_VERSION="12.2.rel1" && \
     curl -Lo arm-none-eabi-gcc.tar.xz \
         https://developer.arm.com/-/media/Files/downloads/gnu/${REL_VERSION}/binrel/arm-gnu-toolchain-${REL_VERSION}-x86_64-arm-none-eabi.tar.xz && \
     mkdir -p /opt/arm-none-eabi && \
