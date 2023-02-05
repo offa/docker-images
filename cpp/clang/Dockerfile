@@ -22,6 +22,9 @@ RUN add-apt-repository ppa:ubuntu-toolchain-r/test && \
     if [ ${VERSION} -ge 12 ]; then \
         apt-get install -y --no-install-recommends libunwind-${VERSION}-dev; \
     fi && \
+    if [ ${VERSION} -ge 14 ]; then \
+        apt-get install -y --no-install-recommends libclang-rt-${VERSION}-dev; \
+    fi && \
     apt-get install -y --no-install-recommends clang-${VERSION} libc++-${VERSION}-dev libc++abi-${VERSION}-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
