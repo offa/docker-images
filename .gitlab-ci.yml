@@ -47,7 +47,7 @@ build_c_cpp:
       - COMPILER: gcc
         VERSION: [12, 11, 10, 9]
       - COMPILER: clang
-        VERSION: [16, 15, 14, 13, 12, 11, 10, 9]
+        VERSION: [16, 14, 13, 12, 11, 10, 9] # Broken Clang 15 disabled (#128)
       - COMPILER: arm-none-eabi-gcc
         VERSION: [11]
   stage: build-lang-specific
@@ -72,7 +72,7 @@ release_stable:
           - gcc-10
           - gcc-9
           - clang-16
-          - clang-15
+          # - clang-15 # Broken build (#128)
           - clang-14
           - clang-13
           - clang-12
