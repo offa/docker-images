@@ -7,50 +7,22 @@ env:
   IMAGE_NO_PUSH: true
 
 jobs:
-  build_base:
+  build_gcc:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        build_config:
-          - { name: "base", dockerfile: "base" }
-          - { name: "base-cpp", dockerfile: "cpp/base" }
-    name: "(Base) ${{ matrix.build_config.name }}"
-    env:
-      DEPLOY_REGISTRY: "registry.gitlab.com/offa/docker-images"
-      IMAGE_NO_PUSH: true
-    steps:
-      - uses: actions/checkout@main
-      - name: Build
-        run: script/build-image.sh ${{ matrix.build_config.name }} ${{ matrix.build_config.dockerfile }}
-
-
-  build_c_cpp:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        build_config:
-          - { compiler: "gcc", version: 12 }
-          - { compiler: "gcc", version: 11 }
-          - { compiler: "gcc", version: 10 }
-          - { compiler: "gcc", version: 9 }
-          - { compiler: "clang", version: 16 }
-          # - { compiler: "clang", version: 15 } # Broken build (#128)
-          - { compiler: "clang", version: 14 }
-          - { compiler: "clang", version: 13 }
-          - { compiler: "clang", version: 12 }
-          - { compiler: "clang", version: 11 }
-          - { compiler: "clang", version: 10 }
-          - { compiler: "clang", version: 9 }
-          - { compiler: "arm-none-eabi-gcc", version: 11 }
-    name: "(C / C++) ${{ matrix.build_config.compiler }}-${{ matrix.build_config.version }}"
+        version:
+          - 13
+          - 12
+          - 11
+          - 10
+          - 9
+    name: "gcc:${{ matrix.version }}"
     steps:
       - uses: actions/checkout@main
       - name: Build
         run: |
-          script/build-image.sh \
-              ${{ matrix.build_config.compiler }}-${{ matrix.build_config.version }} \
-              cpp/${{ matrix.build_config.compiler }} \
-              ${{ matrix.build_config.version }}
+          podman build -t gcc:${{ matrix.version }} --build-arg VERSION=${{ matrix.version }} -f gcc/Dockerfile .
 
   lint:
     runs-on: ubuntu-latest
