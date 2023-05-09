@@ -44,6 +44,20 @@ jobs:
         run: |
           podman build -t clang:${{ matrix.version }} --build-arg VERSION=${{ matrix.version }} -f clang/Dockerfile .
 
+  build_arm_none_eabi_gcc:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version:
+          - { full: "12.2.mpacbti-rel1", short: "12" }
+    name: "arm-none-eabi:${{ matrix.version.short }}"
+    steps:
+      - uses: actions/checkout@main
+      - name: Build
+        run: |
+          podman build -t arm-none-eabi:${{ matrix.version.short }} --build-arg VERSION=${{ matrix.version.full }} -f arm-none-eabi-gcc/Dockerfile .
+
+
   lint:
     runs-on: ubuntu-latest
     name: "Hadolint"
