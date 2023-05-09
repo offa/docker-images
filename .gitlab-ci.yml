@@ -17,7 +17,7 @@ build_gcc:
     matrix:
       - VERSION: [13, 12, 11, 10, 9]
   script:
-    - podman build -t gcc:${VERSION} --build-arg VERSION=${VERSION} -f gcc/Dockerfile .
+    - docker build -t gcc:${VERSION} --build-arg VERSION=${VERSION} -f gcc/Dockerfile .
     - build/publish_image.sh gcc:${VERSION}
 
 build_clang:
@@ -25,7 +25,7 @@ build_clang:
     matrix:
       - VERSION: [16, 14, 15, 13, 12, 11, 10, 9]
   script:
-    - podman build -t clang:${VERSION} --build-arg VERSION=${VERSION} -f clang/Dockerfile .
+    - docker build -t clang:${VERSION} --build-arg VERSION=${VERSION} -f clang/Dockerfile .
     - build/publish_image.sh clang:${VERSION}
 
 build_arm_none_eabi:
@@ -33,5 +33,5 @@ build_arm_none_eabi:
     matrix:
       - VERSION: [12]
   script:
-    - podman build -t arm-none-eabi:${VERSION} --build-arg VERSION=${VERSION}.mpacbti-rel1 -f arm-none-eabi-gcc/Dockerfile .
+    - docker build -t arm-none-eabi:${VERSION} --build-arg VERSION=${VERSION}.mpacbti-rel1 -f arm-none-eabi-gcc/Dockerfile .
     - build/publish_image.sh arm-none-eabi:${VERSION}
