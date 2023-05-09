@@ -21,8 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - name: Build
-        run: |
-          podman build -t gcc:${{ matrix.version }} --build-arg VERSION=${{ matrix.version }} -f gcc/Dockerfile .
+        run: podman build -t gcc:${{ matrix.version }} --build-arg VERSION=${{ matrix.version }} -f gcc/Dockerfile .
+
 
   build_clang:
     runs-on: ubuntu-latest
@@ -41,8 +41,8 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - name: Build
-        run: |
-          podman build -t clang:${{ matrix.version }} --build-arg VERSION=${{ matrix.version }} -f clang/Dockerfile .
+        run: podman build -t clang:${{ matrix.version }} --build-arg VERSION=${{ matrix.version }} -f clang/Dockerfile .
+
 
   build_arm_none_eabi_gcc:
     runs-on: ubuntu-latest
@@ -54,8 +54,7 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - name: Build
-        run: |
-          podman build -t arm-none-eabi:${{ matrix.version.short }} --build-arg VERSION=${{ matrix.version.full }} -f arm-none-eabi-gcc/Dockerfile .
+        run: podman build -t arm-none-eabi:${{ matrix.version.short }} --build-arg VERSION=${{ matrix.version.full }} -f arm-none-eabi-gcc/Dockerfile .
 
 
   lint:
