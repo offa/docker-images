@@ -24,6 +24,26 @@ jobs:
         run: |
           podman build -t gcc:${{ matrix.version }} --build-arg VERSION=${{ matrix.version }} -f gcc/Dockerfile .
 
+  build_clang:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version:
+          - 16
+          - 15
+          - 14
+          - 13
+          - 12
+          - 11
+          - 10
+          - 9
+    name: "clang:${{ matrix.version }}"
+    steps:
+      - uses: actions/checkout@main
+      - name: Build
+        run: |
+          podman build -t clang:${{ matrix.version }} --build-arg VERSION=${{ matrix.version }} -f clang/Dockerfile .
+
   lint:
     runs-on: ubuntu-latest
     name: "Hadolint"
