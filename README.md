@@ -11,11 +11,26 @@ Docker Images.
 **Registry:** https://gitlab.com/offa/docker-images/container_registry
 
 
-### :warning: Deprecation of older compiler versions
+## Available Images
 
-Following compiler versions are deprecated and will be removed later, since they are no longer available on Ubuntu 22.04 LTS:
+| Image | Status | Note |
+|-------|--------|------|
+| gcc:13 | | |
+| gcc:12 | | |
+| gcc:11 | | |
+| gcc:10 | | |
+| gcc:9 | | |
+| clang:16 | | |
+| clang:15 | | |
+| clang:14 | | |
+| clang:13 | | |
+| clang:12 | | |
+| clang:11 | | |
+| clang:10 | | |
+| clang:9 | | |
+| arm-none-eabi:12 | | |
 
-- GCC 7
-- GCC 8
-- Clang 7
-- Clang 8
+
+##### :warning: Deprecation of older images
+
+Images not mentioned above are deprecated.
