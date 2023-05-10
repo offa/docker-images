@@ -12,4 +12,6 @@ if [ -z "${DEPLOY_REGISTRY}" ]; then
     exit 1
 fi
 
-docker push "${DEPLOY_REGISTRY}/${1}"
+PUBLISH_IMAGE="${DEPLOY_REGISTRY}/${1}"
+docker tag "${1}" "${PUBLISH_IMAGE}"
+docker push "${PUBLISH_IMAGE}"
