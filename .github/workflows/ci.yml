@@ -50,11 +50,11 @@ jobs:
       matrix:
         version:
           - { full: "12.2.mpacbti-rel1", short: "12" }
-    name: "arm-none-eabi:${{ matrix.version.short }}"
+    name: "arm-none-eabi-gcc:${{ matrix.version.short }}"
     steps:
       - uses: actions/checkout@main
       - name: Build
-        run: podman build -t arm-none-eabi:${{ matrix.version.short }} --build-arg VERSION=${{ matrix.version.full }} -f arm-none-eabi-gcc/Dockerfile .
+        run: podman build -t arm-none-eabi-gcc:${{ matrix.version.short }} --build-arg VERSION=${{ matrix.version.full }} -f arm-none-eabi-gcc/Dockerfile .
 
 
   lint:
