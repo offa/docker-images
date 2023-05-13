@@ -28,7 +28,7 @@ build_clang:
     - docker build -t clang:${VERSION} --build-arg VERSION=${VERSION} -f clang/Dockerfile .
     - build/publish_image.sh clang:${VERSION}
 
-build_arm_none_eabi:
+build_arm_none_eabi_gcc:
   parallel:
     matrix:
       - VERSION: [12]
