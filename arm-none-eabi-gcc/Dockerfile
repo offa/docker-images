@@ -15,3 +15,4 @@ RUN curl -Lo arm-none-eabi-gcc.tar.xz \
     chmod -R -w /opt/arm-none-eabi && \
     rm ./*.tar.xz
 
+ENV PATH="${PATH}:/opt/arm-none-eabi/bin"
