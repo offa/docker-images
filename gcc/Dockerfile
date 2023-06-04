@@ -1,4 +1,4 @@
-ARG VERSION=12
+ARG VERSION
 
 FROM docker.io/teeks99/gcc-ubuntu:${VERSION}
 

@@ -1,4 +1,4 @@
-ARG VERSION=15
+ARG VERSION
 
 FROM docker.io/teeks99/clang-ubuntu:${VERSION}
 

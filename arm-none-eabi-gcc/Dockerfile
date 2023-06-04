@@ -1,6 +1,6 @@
 FROM docker.io/ubuntu:jammy
 
-ARG VERSION="12.2.mpacbti-rel1"
+ARG VERSION
 
 COPY script/ /tmp/bin/
 
