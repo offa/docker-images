@@ -1,6 +1,6 @@
 ARG VERSION=15
 
-FROM teeks99/clang-ubuntu:${VERSION}
+FROM docker.io/teeks99/clang-ubuntu:${VERSION}
 
 ARG VERSION
 ENV CC=clang-${VERSION} CXX=clang++-${VERSION}

@@ -1,6 +1,6 @@
 ARG VERSION=12
 
-FROM teeks99/gcc-ubuntu:${VERSION}
+FROM docker.io/teeks99/gcc-ubuntu:${VERSION}
 
 ARG VERSION
 ENV CC=gcc-${VERSION} CXX=g++-${VERSION}
