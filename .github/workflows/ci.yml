@@ -49,7 +49,7 @@ jobs:
     strategy:
       matrix:
         version:
-          - { full: "12.2.mpacbti-rel1", short: "12" }
+          - { full: "12.3.rel1", short: "12" }
     name: "arm-none-eabi-gcc:${{ matrix.version.short }}"
     steps:
       - uses: actions/checkout@main
