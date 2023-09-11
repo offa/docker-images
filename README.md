@@ -19,7 +19,7 @@ Docker Images.
 | gcc:12 | | |
 | gcc:11 | | |
 | gcc:10 | | |
-| gcc:9 | | |
+| gcc:9 | Deprecated | |
 | clang:16 | | |
 | clang:15 | | |
 | clang:14 | | |
@@ -27,10 +27,10 @@ Docker Images.
 | clang:12 | | |
 | clang:11 | | |
 | clang:10 | | |
-| clang:9 | | |
+| clang:9 | Deprecated | |
 | arm-none-eabi:12 | | |
 
 
-##### :warning: Deprecation of older images
+##### :warning: EOL of older images
 
-Images not mentioned above are deprecated.
+Images not mentioned above are End of Life.
