@@ -3,7 +3,7 @@
 apt-get update
 apt-get install -y --no-install-recommends build-essential
 
-CMAKE_VERSION="3.27.5"
+CMAKE_VERSION="3.27.6"
 
 curl -sSL "https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-linux-x86_64.sh" -o install-cmake.sh
 chmod +x install-cmake.sh
