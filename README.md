@@ -29,7 +29,8 @@ Docker Images.
 | clang:11 | | |
 | clang:10 | | |
 | clang:9 | Deprecated | |
-| arm-none-eabi:12 | | |
+| arm-none-eabi:13 | | |
+| arm-none-eabi:12 | Deprecated | |
 
 
 ##### :warning: EOL of older images
