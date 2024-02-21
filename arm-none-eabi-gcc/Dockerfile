@@ -4,7 +4,8 @@ ARG VERSION
 
 COPY script/ /tmp/bin/
 
-RUN tmp/bin/install_dev_tools.sh && \
+RUN tmp/bin/update.sh && \
+        tmp/bin/install_dev_tools.sh && \
         tmp/bin/install_cpp_tools.sh && \
         tmp/bin/cleanup.sh
 

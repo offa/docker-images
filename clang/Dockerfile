@@ -7,7 +7,8 @@ ENV CC=clang-${VERSION} CXX=clang++-${VERSION}
 
 COPY script/ /tmp/bin/
 
-RUN tmp/bin/install_dev_tools.sh && \
+RUN tmp/bin/update.sh && \
+        tmp/bin/install_dev_tools.sh && \
         tmp/bin/install_cpp_tools.sh && \
         if [ "${VERSION}" -ge 12 ] && [ "${VERSION}" -lt 15 ]; then \
             apt-get install -y --no-install-recommends libunwind-${VERSION}-dev; \
