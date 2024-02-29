@@ -19,16 +19,16 @@ Docker Images.
 | gcc:12 | | |
 | gcc:11 | | |
 | gcc:10 | | |
-| gcc:9 | Deprecated | |
+| gcc:9  | Deprecated | |
 | clang:17 | | |
 | clang:16 | | |
 | clang:15 | | |
 | clang:14 | | |
 | clang:13 | | |
-| clang:12 | | |
-| clang:11 | | |
-| clang:10 | | |
-| clang:9 | Deprecated | |
+| clang:12 | Deprecated | |
+| clang:11 | Deprecated | |
+| clang:10 | Deprecated | |
+| clang:9  | Deprecated | |
 | arm-none-eabi:13 | | |
 | arm-none-eabi:12 | Deprecated | |
 
