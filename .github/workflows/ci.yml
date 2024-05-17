@@ -12,6 +12,7 @@ jobs:
     strategy:
       matrix:
         version:
+          - 14
           - 13
           - 12
           - 11

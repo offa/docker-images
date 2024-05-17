@@ -15,6 +15,7 @@ Docker Images.
 
 | Image | Status | Note |
 |-------|--------|------|
+| gcc:14 | | |
 | gcc:13 | | |
 | gcc:12 | | |
 | gcc:11 | | |

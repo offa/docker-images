@@ -15,7 +15,7 @@ before_script:
 build_gcc:
   parallel:
     matrix:
-      - VERSION: [13, 12, 11, 10]
+      - VERSION: [14, 13, 12, 11, 10]
   script:
     - docker build -t gcc:${VERSION} --build-arg VERSION=${VERSION} -f gcc/Dockerfile .
     - build/publish_image.sh gcc:${VERSION}
