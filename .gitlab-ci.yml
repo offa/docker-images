@@ -33,5 +33,5 @@ build_arm_none_eabi_gcc:
     matrix:
       - VERSION: [13]
   script:
-    - docker build -t arm-none-eabi-gcc:${VERSION} --build-arg VERSION=${VERSION}.2.rel1 -f arm-none-eabi-gcc/Dockerfile .
+    - docker build -t arm-none-eabi-gcc:${VERSION} --build-arg VERSION=${VERSION}.3.rel1 -f arm-none-eabi-gcc/Dockerfile .
     - build/publish_image.sh arm-none-eabi-gcc:${VERSION}
