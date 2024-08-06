@@ -16,7 +16,6 @@ jobs:
           - 13
           - 12
           - 11
-          - 10
     name: "gcc:${{ matrix.version }}"
     steps:
       - uses: actions/checkout@main
@@ -33,8 +32,6 @@ jobs:
           - 17
           - 16
           - 15
-          - 14
-          - 13
     name: "clang:${{ matrix.version }}"
     steps:
       - uses: actions/checkout@main
