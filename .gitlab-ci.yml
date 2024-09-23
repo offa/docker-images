@@ -23,7 +23,7 @@ build_gcc:
 build_clang:
   parallel:
     matrix:
-      - VERSION: [18, 17, 16, 14]
+      - VERSION: [19, 18, 17, 16, 14]
   script:
     - docker build -t clang:${VERSION} --build-arg VERSION=${VERSION} -f clang/Dockerfile .
     - build/publish_image.sh clang:${VERSION}
