@@ -32,7 +32,7 @@ Docker Images.
 | clang:11 | Deprecated | |
 | clang:10 | Deprecated | |
 | clang:9  | Deprecated | |
-| arm-none-eabi:14 | Deprecated | |
+| arm-none-eabi:14 | | |
 | arm-none-eabi:13 | Deprecated | |
 | arm-none-eabi:12 | Deprecated | |
 
