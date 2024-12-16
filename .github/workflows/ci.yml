@@ -45,7 +45,7 @@ jobs:
     strategy:
       matrix:
         version:
-          - { full: "13.3.rel1", short: "13" }
+          - { full: "14.2.rel1", short: "14" }
     name: "arm-none-eabi-gcc:${{ matrix.version.short }}"
     steps:
       - uses: actions/checkout@main
