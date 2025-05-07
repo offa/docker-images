@@ -8,7 +8,6 @@ permissions:
 
 env:
   DEPLOY_REGISTRY: "registry.gitlab.com/offa/docker-images"
-  IMAGE_NO_PUSH: true
 
 jobs:
   build_gcc:
