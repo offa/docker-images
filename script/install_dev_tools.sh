@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 apt-get update
 apt-get install -y --no-install-recommends software-properties-common gpg-agent
 add-apt-repository ppa:git-core/ppa
