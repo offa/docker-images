@@ -64,6 +64,6 @@ jobs:
     name: "Hadolint"
     steps:
       - uses: actions/checkout@main
-      - uses: hadolint/hadolint-action@v3.2.0
+      - uses: hadolint/hadolint-action@v3.3.0
         with:
           recursive: true
