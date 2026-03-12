@@ -5,6 +5,7 @@ FROM docker.io/teeks99/clang-ubuntu:${VERSION}
 ARG VERSION
 ENV CC=clang-${VERSION} CXX=clang++-${VERSION}
 
+ENV DEBIAN_FRONTEND=noninteractive
 COPY script/ /tmp/bin/
 
 RUN tmp/bin/update.sh && \

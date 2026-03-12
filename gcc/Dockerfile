@@ -5,6 +5,7 @@ FROM docker.io/teeks99/gcc-ubuntu:${VERSION}
 ARG VERSION
 ENV CC=gcc-${VERSION} CXX=g++-${VERSION}
 
+ENV DEBIAN_FRONTEND=noninteractive
 COPY script/ /tmp/bin/
 
 RUN tmp/bin/update.sh && \

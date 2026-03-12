@@ -2,6 +2,7 @@ FROM docker.io/ubuntu:jammy
 
 ARG VERSION
 
+ENV DEBIAN_FRONTEND=noninteractive
 COPY script/ /tmp/bin/
 
 RUN tmp/bin/update.sh && \
