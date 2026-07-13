@@ -4,7 +4,7 @@ set -eu
 
 DEPLOY_BRANCH="master"
 
-if [ "${GIT_COMMIT_BRANCH}" != "${DEPLOY_BRANCH}" ] && [ "${CI_COMMIT_REF_NAME}" != "${DEPLOY_BRANCH}" ]; then
+if [ "${CI_COMMIT_BRANCH}" != "${DEPLOY_BRANCH}" ]; then
     echo "Skip deployment"
     exit 0
 fi
