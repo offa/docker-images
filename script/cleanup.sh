@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -eux
 
 apt-get autoclean
 apt-get autoremove -y

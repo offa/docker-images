@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 DEPLOY_BRANCH="master"
 
 if [ "${GIT_COMMIT_BRANCH}" != "${DEPLOY_BRANCH}" ] && [ "${CI_COMMIT_REF_NAME}" != "${DEPLOY_BRANCH}" ]; then
