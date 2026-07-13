@@ -61,7 +61,7 @@ jobs:
         run: podman build -t arm-none-eabi-gcc:${{ matrix.version.short }} --build-arg VERSION=${{ matrix.version.full }} -f arm-none-eabi-gcc/Dockerfile .
 
 
-  lint:
+  hadolint:
     runs-on: ubuntu-latest
     name: "Hadolint"
     steps:
@@ -69,3 +69,13 @@ jobs:
       - uses: hadolint/hadolint-action@2332a7b74a6de0dda2e2221d575162eba76ba5e5
         with:
           recursive: true
+
+
+  shellcheck:
+    runs-on: ubuntu-latest
+    name: Shellcheck
+    steps:
+      - uses: actions/checkout@main
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@00b27aa7cb85167568cb48a3838b75f4265f2bca
+
