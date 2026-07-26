@@ -1,4 +1,4 @@
-FROM docker.io/ubuntu:jammy
+FROM docker.io/ubuntu:26.04
 
 ARG VERSION
 
