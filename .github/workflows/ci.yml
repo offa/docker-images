@@ -33,6 +33,7 @@ jobs:
     strategy:
       matrix:
         version:
+          - 23
           - 22
           - 21
           - 20

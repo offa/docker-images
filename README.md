@@ -23,6 +23,7 @@ Docker Images.
 | gcc:11 | | |
 | gcc:10 | Deprecated | |
 | gcc:9  | Deprecated | |
+| clang:23 | | |
 | clang:22 | | |
 | clang:21 | | |
 | clang:20 | | |
