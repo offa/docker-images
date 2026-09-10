@@ -28,10 +28,10 @@ build_clang:
     - docker build -t clang:${VERSION} --build-arg VERSION=${VERSION} -f clang/Dockerfile .
     - build/publish_image.sh clang:${VERSION}
 
-build_arm_none_eabi_gcc:
-  parallel:
-    matrix:
-      - VERSION: [15]
-  script:
-    - docker build -t arm-none-eabi-gcc:${VERSION} --build-arg VERSION=${VERSION}.3.rel1 -f arm-none-eabi-gcc/Dockerfile .
-    - build/publish_image.sh arm-none-eabi-gcc:${VERSION}
+# build_arm_none_eabi_gcc:
+#   parallel:
+#     matrix:
+#       - VERSION: [15]
+#   script:
+#     - docker build -t arm-none-eabi-gcc:${VERSION} --build-arg VERSION=${VERSION}.3.rel1 -f arm-none-eabi-gcc/Dockerfile .
+#     - build/publish_image.sh arm-none-eabi-gcc:${VERSION}
